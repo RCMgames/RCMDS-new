@@ -1,0 +1,29 @@
+shooter
+73.37.49.126
+25213
+Controller (Xbox One For Windows)
+
+3,j,Button 1,-1,null,null,-.4
+3,u,Button 5,1,null,null,null
+4,,,null,null,null,.6
+5,44,Button 0,null,.47,null,null
+5,k,Button 2,null,.61,null,null
+5,i,Button 3,null,1,null,null
+5,32,Button 4,null,-1,1,null
+6,32,Button 4,1,null,null,0
+
+0,s,w,Y Axis,1,1,-1,1,true
+2,a,d,X Rotation,1,1,-1,1,false
+5,h,y,Z Axis,2,0.003,-1,1,true
+
+44,Button 0,.69,.65,002244,004488,25
+k,Button 2,.69,.5,002244,004488,25
+i,Button 3,.69,.35,002244,004488,25
+j,Button 1,.84,.65,004400,008800,25
+u,Button 5,.84,.35,004400,008800,25
+32,Button 4,.8125,.875,CC0000,FF0000,60
+
+2,0,.19,.6,888888,125
+
+5,.75,.5,0004488,1,30
+3,.90,.5,008800,1,30
