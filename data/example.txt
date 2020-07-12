@@ -1,0 +1,22 @@
+Example template
+127.0.0.1
+25211
+Controller (Xbox One For Windows)
+
+3,1,Button 0,1,null,null,0
+4,2,Button 0,1,null,null,0
+
+0,s,w,Y Axis,1,0.003,-1,1,true
+1,a,d,X Axis,1,0.003,-1,1,false
+2,q,e,X Rotation,1,0.003,-1,1,false
+
+1,Button 0,.75,.65,008800,00FF00,30
+2,Button 0,.85,.65,008800,00FF00,30
+
+1,0,0.17,0.6,888888,100
+
+0,.31,.6,FFFF00,1,20
+1,.17,.84,FF00FF,2,20
+2,.8,.5,FF0000,2,20
+
+easter egg
