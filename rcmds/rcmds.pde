@@ -1,65 +1,107 @@
-String[] config;
-String[] line;
-String file = "example";
-int[] nums = {0, 0, 0, 0, 0};
-float[] toSend = {0, 0, 0, 0, 0, 0, 0, 0};
-float batVolt=0.0;
-boolean enabled=false;
-float test = 0;
-TypeBox configTypeBox;
-EnableSwitch enableSwitch;
+//v1.1
 
-Button First;
+HashSet<Integer> virtualKeyboardButton;
+HashSet<String> virtualGamepadButton;
+String[] Window;
+String imput = "example";
+String oldFile;
+String error = null;
+float[] data = new float[16];
+boolean enabled = false;
+String setup = "";
 
 void setup() {
-  size(576, 324);
-  background(10);
-  textAlign(LEFT, TOP);
-  rectMode(CENTER);
-  textSize(height/20);
+  virtualKeyboardButton=new HashSet<Integer>();
+  virtualGamepadButton=new HashSet<String>();
 
-  mousescreen=new Mousescreen();
-  keyboardCtrl=new KeyboardCtrl();
-  udp = new UDP(this);
-  udp.listen(true);
-  configTypeBox=new TypeBox(width/8.2, height/30, width/4.1, height/15, "file: ", color(0, 255, 0));
-  enableSwitch=new EnableSwitch(width*13/16, height/10, width/4, height/9);
+  if (fileExists(dataPath("setup.txt"))) {
+    try {
+      windowSetup("setup");
+    }
+    catch (Throwable e) {
+      setup = "bad setup file";
+    }
+  } else {
+    setup = "missing setup file";
+  }
 
-  setupObjects();
-  
-  setupGamepad(config[3]);
+  if (setup.equals("")) {
+    udp = new UDP(this);
+    udp.listen(true);
+
+    if (fileExists(dataPath(imput+".txt"))) {
+      try {
+        objectSetup(imput);
+        oldFile=imput;
+      }
+      catch (Throwable e) {
+        error = "Bad config file";
+        name = "error";
+      }
+    } else {
+      error = "File does not exist";
+      name = "error";
+    }
+  }
 }
 
 void draw() {
-  background(10);
-  fill(20);
-  noStroke();
-  rect(width/2, height/10, width, height/5);
-  enabled=runEnableSwitch(enabled);
-  runObjects();
-  runTypeBox();
-  //runBatGraph();
-  sendWifiData(true);
+  if (setup.equals("")) {
+    background(10);
+    fill(20);
+    noStroke();
+    rect(width/2, height*rectHeight/2, width, height*rectHeight);
+    enabled=runEnableSwitch(enabled);
+    runObjects();
+    runTypeBox();
+    batVolts.run(nf(data[8], 0, 2)+" V");
+    batGraph.run(data[8]);
+    sendWifiData(true);
+    robotName.run("Name: "+name);
+    dispTelem.run(msg);
+    
+    if (keyboardCtrl.isPressed(15)) {
+      launch(dataPath(oldFile+".txt"));
+    }
+    
+    if (keyboardCtrl.isPressed(16)) {
+      launch(dataPath("setup.txt"));
+    }
 
-  fill(255);
-  text("Name: "+config[0], 2, height*2/15);
+    if (keyboardCtrl.isPressed(18)) {
+      if (fileExists(dataPath("setup.txt"))) {
+        try {
+          windowSetup("setup");
+        }
+        catch (Throwable e) {
+          setup = "bad setup file";
+        }
+      } else {
+        setup = "missing setup file";
+      }
+      if (fileExists(dataPath(oldFile+".txt"))) {
+        try {
+          objectSetup(oldFile);
+        }
+        catch (Throwable e) {
+          error = "Bad config file";
+          name = "error";
+        }
+      } else {
+        error = "File does not exist";
+        name = "error";
+      }
+    }
 
-  String[] msg={"ping:", " "+str(wifiPing), "battery:", " "+str(batVolt), "ip:", " "+wifiIP, "port:", " "+str(wifiPort), "variables:"," 0: "+str(toSend[0]), " 1: "+str(toSend[1]), " 2: "+str(toSend[2]), " 3: "+str(toSend[3]), " 4: "+str(toSend[4]), " 5: "+str(toSend[5]), " 6: "+str(toSend[6]), " 7: "+str(toSend[7])};
-  dispTelem(msg, width/2, height*3/5, width/4, height*4/5, 12, 3);
-
-  //temporary code, will be switched out later
-  
-  //pushStyle();
-  //textAlign(CENTER, CENTER);
-  //fill(0, 255, 0);
-  //stroke(0);
-  //rect(width/2, height/10, width/4, height/10);
-  //noStroke();
-  //fill(0);
-  //text(batVolt, width/2, height/10);
-  //popStyle();
-}
-void WifiDataToRecv() {
-  batVolt=recvFl();
-  ////////////////////////////////////add data to read here
+    if (!focused) {
+      enabled = false;
+    }
+  } else {
+    surface.setSize(300, 50);
+    textSize(30);
+    background(10);
+    textAlign(CENTER, CENTER);
+    fill(200, 0, 0);
+    text(setup, width/2, height/2);
+  }
 }

@@ -18,10 +18,12 @@ void sendWifiData(boolean t) {
     }
     wifiSentMillis=millis();
     wifiArrayCounter=0;
+
     sendBl(enabled);
     for (int i=0; i<8; i++) {
-      sendFl(toSend[i]);
+      sendFl(data[i]);
     }
+
     byte[] tosend=new byte[wifiArrayCounter];
     for (int i=0; i<wifiArrayCounter; i++) {
       tosend[i]=arrayToSend[i];
@@ -29,13 +31,15 @@ void sendWifiData(boolean t) {
     udp.send(tosend, wifiIP, wifiPort);
   }
 }
-void receive( byte[] data, String ip, int port ) {//wifi event handler
+void receive( byte[] wifidatareceived, String ip, int port ) {//wifi event handler
   wifiReceivedMillis=millis();
   for (int i=0; i<data.length; i++) {
-    arrayRecvd[i]=(256+data[i])%256;
+    arrayRecvd[i]=(256+wifidatareceived[i])%256;
   }
   wifiArrayCounter=0;
-  WifiDataToRecv();
+  for (int i=8; i<16; i++) {
+    data[i]=recvFl();
+  }
   sendWifiData(false);
 }
 void sendBl(boolean d) {

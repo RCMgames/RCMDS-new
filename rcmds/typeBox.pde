@@ -12,18 +12,19 @@ class TypeBox {
   boolean le;
   String entry;
   color col;
-  TypeBox(float _x, float _y, float _w, float _h, String _label, color _col) {
-    x=_x;
-    y=_y;
-    w=_w;
-    h=_h;
-    label=_label;
+  TypeBox(String[] configData, color _col) {
+    x=width*float(configData[0]);
+    y=height*float(configData[1]);
+    w=width*float(configData[2]);
+    h=height*float(configData[3]);
+    label=configData[4];
     e=false;
     le=false;
     col=_col;
     mouseID=mousescreen.registerZone(x, y, w, h);
   }
   void doCommon(int numMode) {
+    pushStyle();
     le=e;
     if ((
       keyboardCtrl.isPressed(int(TAB)) ||
@@ -93,6 +94,7 @@ class TypeBox {
     if (!e) {
       text(val, x+textWidth(label)/2, y, w-textWidth(label), h);
     }
+    popStyle();
     return val;
   }
   int run(int val) {
@@ -105,6 +107,7 @@ class TypeBox {
     if (!e) {
       text(str(val), x+textWidth(label)/2, y, w-textWidth(label), h);
     }
+    popStyle();
     return val;
   }
   float run(float val) {
@@ -117,19 +120,33 @@ class TypeBox {
     if (!e) {
       text(str(val), x+textWidth(label)/2, y, w-textWidth(label), h);
     }
+    popStyle();
     return val;
   }
 }
 
 void runTypeBox () {
   wasTypeBoxActive = typeBoxActive;
-  file=configTypeBox.run(file);
+  imput=configTypeBox.run(imput);
   if (wasTypeBoxActive && !typeBoxActive) {
-    setupObjects();
+    if (fileExists(dataPath(imput+".txt"))) {
+      try {
+        objectSetup(imput);
+        oldFile=imput;
+      }
+      catch (Throwable e) {
+        if ( oldFile != null) {
+          objectSetup(oldFile);
+        }
+        error = "Bad config file";
+        println(e);
+      }
+    } else {
+      error = "File does not exist";
+    }
   }
-  textSize(15);
-  fill(255, 0, 0);
-  if (!fileExists(dataPath(file+".txt"))) {
-    text("file does not exist", 2, height/15+3);
+  //textSize(height/20);
+  if (error != null) {
+    errors.run(error);
   }
 }

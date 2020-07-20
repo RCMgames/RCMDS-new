@@ -7,11 +7,11 @@ class EnableSwitch {
   boolean locked=true;
   int pointerID;
 
-  EnableSwitch(float _x, float _y, float _w, float _h) {
-    x=_x;
-    y=_y;
-    w=_w;
-    h=_h;
+  EnableSwitch(String[] configData) {
+    x=width*float(configData[0]);
+    y=height*float(configData[1]);
+    w=width*float(configData[2]);
+    h=height*float(configData[3]);
     pointerID=mousescreen.registerZone(x, y, w, h);
     sliderPos=1;
   }
@@ -21,7 +21,7 @@ class EnableSwitch {
     pushStyle();
     if (enabled) {
       boolean pressed=mousescreen.readPressed(pointerID);
-      if (pressed&&!locked||keyboardCtrl.isPressed(ENTER)) {
+      if (pressed&&!locked||keyboardCtrl.isPressed(ENTER)||gamepadButton("Button 6", false)) {
         enabled=false;
         locked=true;
       }
@@ -62,7 +62,7 @@ class EnableSwitch {
         fill(255, 255, 0);
         rect(x+constrain(w/2*swipePos, -w/2+h/2, w/2-h/2), y, h, h, h/4);
       }
-      if ((swipePos<=-1+h/w&&!locked)||(keyboardCtrl.isPressed('[')&&keyboardCtrl.isPressed(']'))) {
+      if ((swipePos<=-1+h/w&&!locked)||(keyboardCtrl.isPressed('[')&&keyboardCtrl.isPressed(']'))||gamepadButton("Button 7", false)) {
         locked=true;
         enabled=true;
       }

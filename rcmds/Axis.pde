@@ -11,7 +11,7 @@ class Axis {
   boolean invert;
   Axis (String[] configData) {
     variable = int(configData[0]);
-    if (configData[1].length()!=0) {
+    if (!configData[1].equals("")) {
       if (configData[1].length()>1) {
         keyboardKey1=int(configData[1]);
       } else {
@@ -20,7 +20,7 @@ class Axis {
     } else {
       keyboardKey1 = 0;
     }
-    if (configData[2].length()!=0) {
+    if (!configData[2].equals("")) {
       if (configData[2].length()>1) {
         keyboardKey2=int(configData[2]);
       } else {
@@ -29,7 +29,7 @@ class Axis {
     } else {
       keyboardKey2 = 0;
     }
-    if (configData[3].length()>0) {
+    if (!configData[3].equals("")) {
       gamepadAxis = configData[3];
     } else {
       gamepadAxis = null;
@@ -44,21 +44,21 @@ class Axis {
 
     //spring
     if (type == 1) {
-      toSend[variable] = 0;
+      data[variable] = 0;
 
       if (keyboardCtrl.isPressed(keyboardKey1)) {
-          toSend[variable] = min;
+          data[variable] = min;
       }
 
       if (keyboardCtrl.isPressed(keyboardKey2)) {
-          toSend[variable] = max;
+          data[variable] = max;
       }
 
-      if (toSend[variable] == 0) {
+      if (data[variable] == 0) {
         if (invert) {
-          toSend[variable] = (max-min)/2*-gamepadVal(gamepadAxis, toSend[variable])+(max+min)/2;
+          data[variable] = (max-min)/2*-gamepadVal(gamepadAxis, data[variable])+(max+min)/2;
         } else {
-          toSend[variable] = (max-min)/2*gamepadVal(gamepadAxis, toSend[variable])+(max+min)/2;
+          data[variable] = (max-min)/2*gamepadVal(gamepadAxis, data[variable])+(max+min)/2;
         }
       }
     }
@@ -66,26 +66,26 @@ class Axis {
     //sticky
     if (type == 2) {      
       if (keyboardCtrl.isPressed(int(keyboardKey1))) {
-          toSend[variable] -= step;
+          data[variable] -= step;
       }
 
       if (keyboardCtrl.isPressed(int(keyboardKey2))) {
-          toSend[variable] += step;
+          data[variable] += step;
       }
 
       if (abs(gamepadVal(gamepadAxis, 0)) > 0.15) {
         if (invert) {
-          toSend[variable] -= 2*step*gamepadVal(gamepadAxis, 0);
+          data[variable] -= 2*step*gamepadVal(gamepadAxis, 0);
         } else {
-          toSend[variable] += 2*step*gamepadVal(gamepadAxis, 0);
+          data[variable] += 2*step*gamepadVal(gamepadAxis, 0);
         }
       }
 
-      if (toSend[variable]>max) {
-        toSend[variable]=max;
+      if (data[variable]>max) {
+        data[variable]=max;
       }
-      if (toSend[variable]<min) {
-        toSend[variable]=min;
+      if (data[variable]<min) {
+        data[variable]=min;
       }
     }
 

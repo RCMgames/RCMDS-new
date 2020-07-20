@@ -1,90 +1,100 @@
 ArrayList<Button> buttons;
 ArrayList<Axis> axes;
 ArrayList<UIButton> uibuttons;
+ArrayList<UIIndicator> uiindicators;
 ArrayList<UIJoystick> uijoysticks;
 ArrayList<UISlider> uisliders;
 
-void setupObjects() {
-  
-  if (fileExists(dataPath(file+".txt"))) {
-    
-    buttons=new ArrayList<Button>();
-    axes=new ArrayList<Axis>();
-    uibuttons=new ArrayList<UIButton>();
-    uijoysticks=new ArrayList<UIJoystick>();
-    uisliders=new ArrayList<UISlider>();
+String name;
+String[] msg;
+int[] nums = new int[6];
 
-    config = loadStrings(file+".txt");
-    
-    wifiIP = config[1];
-    wifiPort = int(config[2]);
-    enabled=false;
+void objectSetup(String file) {
 
-    for (int i=0; i<8; i++) {
-      if (i<5)nums[i]=0;
-      toSend[i]=0;
-    }
+  String[] config;
+  String[] line;
 
-    int a = 0;
+  buttons=new ArrayList<Button>();
+  axes=new ArrayList<Axis>();
+  uibuttons=new ArrayList<UIButton>();
+  uiindicators=new ArrayList<UIIndicator>();
+  uijoysticks=new ArrayList<UIJoystick>();
+  uisliders=new ArrayList<UISlider>();
 
-    for (int i=5; a<5 && i<config.length; i++) {
-      if (split(config[i], ",").length == 1) {
-        a++;
-      } else {
-        nums[a]++;
-      }
-    }
+  config = loadStrings(file+".txt");
 
-    a = 4;
+  name = config[0];
 
-    for (int i=0; i<nums[0]; i++) {
-      a++;
-      line = split(config[a], ',');
-      buttons.add(new Button(line));
-    }
-    a++;
-    for (int i=0; i<nums[1]; i++) {
-      a++;
-      line = split(config[a], ',');
-      axes.add(new Axis(line));
-    }
-    a++;
-    for (int i=0; i<nums[2]; i++) {
-      a++;
-      line = split(config[a], ',');
-      uibuttons.add(new UIButton(line));
-    }
-    a++;
-    for (int i=0; i<nums[3]; i++) {
-      a++;
-      line = split(config[a], ',');
-      uijoysticks.add(new UIJoystick(line));
-    }
-    a++;
-    for (int i=0; i<nums[4]; i++) {
-      a++;
-      line = split(config[a], ',');
-      uisliders.add(new UISlider(line));
-    }
-  } else {
-    println("File does not exist");
+  wifiIP = config[1];
+  wifiPort = int(config[2]);
+  enabled=false;
+
+  msg=split(config[3], ";");
+
+  for (int i=0; i<16; i++) {
+    if (i<6)nums[i]=0;
+    data[i]=0;
+  }
+
+  int a=5;
+
+  for (; !config[a].equals(""); a++) {
+    line = split(config[a], ',');
+    buttons.add(new Button(line));
+    nums[0]++;
+  }
+  a++;
+  for (; !config[a].equals(""); a++) {
+    line = split(config[a], ',');
+    axes.add(new Axis(line));
+    nums[1]++;
+  }
+  a++;
+  for (; !config[a].equals(""); a++) {
+    line = split(config[a], ',');
+    uibuttons.add(new UIButton(line));
+    nums[2]++;
+  }
+  a++;
+  for (; !config[a].equals(""); a++) {
+    line = split(config[a], ',');
+    uiindicators.add(new UIIndicator(line));
+    nums[3]++;
+  }
+  a++;
+  for (; !config[a].equals(""); a++) {
+    line = split(config[a], ',');
+    uijoysticks.add(new UIJoystick(line));//
+    nums[4]++;
+  }
+  a++;
+  for (; a<config.length && !config[a].equals(""); a++) {
+    line = split(config[a], ',');
+    uisliders.add(new UISlider(line));//
+    nums[5]++;
+  }
+  if (oldFile != file) {
+    error = null;
   }
 }
 
 void runObjects () {
-  for(int i=0;i<nums[0];i++){
+  for (int i=0; i<nums[0]; i++) {
     buttons.get(i).run();
   }
-  for(int i=0;i<nums[1];i++){
+  for (int i=0; i<nums[1]; i++) {
     axes.get(i).run();
   }
-  for(int i=0;i<nums[2];i++){
+  for (int i=0; i<nums[2]; i++) {
     uibuttons.get(i).run();
   }
-  for(int i=0;i<nums[3];i++){
+  for (int i=0; i<nums[3]; i++) {
+    uiindicators.get(i).run();
+  }
+  for (int i=0; i<nums[4]; i++) {
     uijoysticks.get(i).run();
   }
-  for(int i=0;i<nums[4];i++){
+  for (int i=0; i<nums[5]; i++) {
     uisliders.get(i).run();
   }
 }

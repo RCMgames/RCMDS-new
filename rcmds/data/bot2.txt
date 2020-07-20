@@ -1,25 +1,26 @@
 x bot
 73.37.49.126
 25212
-Controller (Xbox One For Windows)
+ping: ,var:ping;ip: ,var:ip;port: ,var:port;;0: ,var:0;1: ,var:1;2: ,var:2;3: ,var:3;4: ,var:4
 
-4,v,Button 0,null,-1,null,null
-4,f,Button 2,null,-.5,null,null
-4,r,Button 3,null,.75,null,null
-3,16,Button 5,1,null,null,-.8
+4,v,Button 0,1,null,-1,null,null
+4,f,Button 2,1,null,-.5,null,null
+4,r,Button 3,1,null,.7,null,null
+3,16,Button 5,1,1,null,null,-.8
 
 0,s,w,Y Axis,1,1,-1,1,true
 1,q,e,X Axis,1,1,-1,1,false
 2,a,d,X Rotation,1,1,-1,1,false
 4,g,t,Z Axis,2,0.03,-1,.75,true
 
-v,Button 0,.7,.7,003366,004488,25
-f,Button 2,.7,.55,003366,004488,25
-r,Button 3,.7,.4,003366,004488,25
-16,Button 5,.9,.55,770000,880000,25
+v,Button 0,1,.7,.7,003366,004488,25
+f,Button 2,1,.7,.55,003366,004488,25
+r,Button 3,1,.7,.4,003366,004488,25
+16,Button 5,1,.9,.55,770000,880000,25
+
 
 1,0,.2,.5,888888,125
 
-2,.2,.8,777777,2,25
-3,.84,.55,880000,1,30
-4,.76,.55,0004488,1,30
+2,-1,1,.2,.8,777777,2,25
+3,-1,1,.84,.55,880000,1,30
+4,-1,.7,.76,.55,0004488,1,30
