@@ -34,7 +34,7 @@ class UIButton {
     size = int(configData[7]);
     mouseID=mousescreen.registerZone(posX*width, posY*height, size, size);
   }
-  boolean run() {
+  boolean runVar() {
     if (mousescreen.readPressed(mouseID)) {
       virtualKeyboardButton.add(keyboardKey);
       virtualGamepadButton.add(gamepadButton);
@@ -46,6 +46,10 @@ class UIButton {
         virtualGamepadButton.remove(gamepadButton);
       }
     }
+
+    return true;
+  }
+  boolean runUI() {
 
     if (type == 1) {
       pressed = keyboardCtrl.isPressed(keyboardKey) || gamepadButton(gamepadButton, false)||virtualKeyboardButton.contains(keyboardKey)||virtualGamepadButton.contains(gamepadButton);

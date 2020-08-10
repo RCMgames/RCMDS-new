@@ -1,4 +1,4 @@
-//v1.1
+//v1.2
 
 HashSet<Integer> virtualKeyboardButton;
 HashSet<String> virtualGamepadButton;
@@ -59,16 +59,16 @@ void draw() {
     sendWifiData(true);
     robotName.run("Name: "+name);
     dispTelem.run(msg);
-    
-    if (keyboardCtrl.isPressed(15)) {
+
+    if (keyboardCtrl.justPressed(15)) {
       launch(dataPath(oldFile+".txt"));
     }
-    
-    if (keyboardCtrl.isPressed(16)) {
+
+    if (keyboardCtrl.justPressed(16)) {
       launch(dataPath("setup.txt"));
     }
 
-    if (keyboardCtrl.isPressed(18)) {
+    if (keyboardCtrl.justPressed(18)) {
       if (fileExists(dataPath("setup.txt"))) {
         try {
           windowSetup("setup");
@@ -104,4 +104,5 @@ void draw() {
     fill(200, 0, 0);
     text(setup, width/2, height/2);
   }
+  keyboardCtrl.clearKeys();
 }
