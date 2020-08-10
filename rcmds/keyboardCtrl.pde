@@ -34,15 +34,17 @@ class KeyboardCtrl {
     return ret;
   }
   void keypress() {
+    if (!isPressed(key)) { 
+      if (key==CODED) {
+        justPressedKeys.add(int(keyCode));
+      } else {
+        justPressedKeys.add(int(key));
+      }
+    }
     if (key==CODED) {
       keys.add(int(keyCode));
     } else {
       keys.add(int(key));
-    }
-    if (key==CODED) {
-      justPressedKeys.add(int(keyCode));
-    } else {
-      justPressedKeys.add(int(key));
     }
   }
   void keyrelease() {
