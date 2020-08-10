@@ -3,13 +3,15 @@ import java.util.HashSet;
 boolean keyPressTypeBox=false;
 class KeyboardCtrl {
   HashSet<Integer> keys;
+  HashSet<Integer> justReleasedKeys;
   KeyboardCtrl() {
     keys=new HashSet<Integer>();
+    justReleasedKeys=new HashSet<Integer>();
   }
   boolean isPressed(int k) {
     int temp = 0;
-    if(k>96) {
-       temp = k-32;
+    if (k>96) {
+      temp = k-32;
     }
     return keys.contains(k) || keys.contains(temp);
   }
@@ -26,6 +28,23 @@ class KeyboardCtrl {
     } else {
       keys.remove(int(key));
     }
+    if (key==CODED) {
+      justReleasedKeys.add(int(keyCode));
+    } else {
+      justReleasedKeys.add(int(key));
+    }
+  }
+  void clearJustReleasedKeys() {
+    justReleasedKeys.clear();
+  }
+  boolean justReleased(int k) {
+    int temp = 0;
+    if (k>96) {
+      temp = k-32;
+    }
+    boolean ret= justReleasedKeys.contains(k) || justReleasedKeys.contains(temp);
+    justReleasedKeys.remove(k);
+    return ret;
   }
 }
 void keyPressed() {
