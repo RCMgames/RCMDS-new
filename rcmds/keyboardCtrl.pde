@@ -43,7 +43,6 @@ class KeyboardCtrl {
       temp = k-32;
     }
     boolean ret= justReleasedKeys.contains(k) || justReleasedKeys.contains(temp);
-    justReleasedKeys.remove(k);
     return ret;
   }
 }
