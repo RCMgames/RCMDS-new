@@ -16,10 +16,14 @@ class UIJoystick {
     size = int(configData[5]);
     mouseID=mousescreen.registerZone(posX*width, posY*height, size, size);
   }
-  boolean run() {
+  boolean runVar() {
     PVector dataVar=mousescreen.readPos(mouseID, new PVector(data[variable1], data[variable2]));
     data[variable1]=dataVar.x;
     data[variable2]=dataVar.y;
+
+    return true;
+  }
+  boolean runUI() {
     fill(rgb);
     rect(posX*width, posY*height, 1.25*size, 1.25*size, size/8);
     fill(255);

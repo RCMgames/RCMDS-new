@@ -60,15 +60,18 @@ void draw() {
     robotName.run("Name: "+name);
     dispTelem.run(msg);
 
-    if (keyboardCtrl.justReleased(15)) {
-      launch(dataPath(oldFile+".txt"));
+    //if (keyboardCtrl.justPressed(15)) {
+    //  launch(dataPath(oldFile+".txt"));
+    //}
+
+    //if (keyboardCtrl.justPressed(16)) {
+    //  launch(dataPath("setup.txt"));
+    //}
+    if (keyboardCtrl.justPressed(15)) {
+      println(millis());
     }
 
-    if (keyboardCtrl.justReleased(16)) {
-      launch(dataPath("setup.txt"));
-    }
-
-    if (keyboardCtrl.justReleased(18)) {
+    if (keyboardCtrl.justPressed(18)) {
       if (fileExists(dataPath("setup.txt"))) {
         try {
           windowSetup("setup");
@@ -104,5 +107,5 @@ void draw() {
     fill(200, 0, 0);
     text(setup, width/2, height/2);
   }
-  keyboardCtrl.clearJustReleasedKeys();
+  keyboardCtrl.clearKeys();
 }
