@@ -60,15 +60,12 @@ void draw() {
     robotName.run("Name: "+name);
     dispTelem.run(msg);
 
-    //if (keyboardCtrl.justPressed(15)) {
-    //  launch(dataPath(oldFile+".txt"));
-    //}
-
-    //if (keyboardCtrl.justPressed(16)) {
-    //  launch(dataPath("setup.txt"));
-    //}
     if (keyboardCtrl.justPressed(15)) {
-      println(millis());
+      launch(dataPath(oldFile+".txt"));
+    }
+
+    if (keyboardCtrl.justPressed(16)) {
+      launch(dataPath("setup.txt"));
     }
 
     if (keyboardCtrl.justPressed(18)) {
