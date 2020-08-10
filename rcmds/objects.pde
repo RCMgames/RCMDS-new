@@ -86,16 +86,28 @@ void runObjects () {
     axes.get(i).run();
   }
   for (int i=0; i<nums[2]; i++) {
-    uibuttons.get(i).run();
+    uibuttons.get(i).runVar();
   }
   for (int i=0; i<nums[3]; i++) {
-    uiindicators.get(i).run();
+    uiindicators.get(i).runVar();
   }
   for (int i=0; i<nums[4]; i++) {
-    uijoysticks.get(i).run();
+    uijoysticks.get(i).runVar();
   }
   for (int i=0; i<nums[5]; i++) {
-    uisliders.get(i).run();
+    uisliders.get(i).runVar();
+  }
+  for (int i=0; i<nums[2]; i++) {
+    uibuttons.get(i).runUI();
+  }
+  for (int i=0; i<nums[3]; i++) {
+    uiindicators.get(i).runUI();
+  }
+  for (int i=0; i<nums[4]; i++) {
+    uijoysticks.get(i).runUI();
+  }
+  for (int i=0; i<nums[5]; i++) {
+    uisliders.get(i).runUI();
   }
 }
 
