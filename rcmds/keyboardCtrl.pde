@@ -4,6 +4,7 @@ boolean keyPressTypeBox=false;
 class KeyboardCtrl {
   HashSet<Integer> keys;
   HashSet<Integer> oldKeys1;
+  HashSet<Integer> oldKeys2;
   HashSet<Integer> oldKeys3;
   HashSet<Integer> oldKeys4;
   HashSet<Integer> oldKeys5;
