@@ -3,18 +3,10 @@ import java.util.HashSet;
 boolean keyPressTypeBox=false;
 class KeyboardCtrl {
   HashSet<Integer> keys;
-  HashSet<Integer> oldKeys1;
-  HashSet<Integer> oldKeys2;
-  HashSet<Integer> oldKeys3;
-  HashSet<Integer> oldKeys4;
-  HashSet<Integer> oldKeys5;
+  HashSet<Integer> oldKeys;
   KeyboardCtrl() {
     keys=new HashSet<Integer>();
-    oldKeys1=new HashSet<Integer>();
-    oldKeys2=new HashSet<Integer>();
-    oldKeys3=new HashSet<Integer>();
-    oldKeys4=new HashSet<Integer>();
-    oldKeys5=new HashSet<Integer>();
+    oldKeys=new HashSet<Integer>();
   }
   boolean isPressed(int k) {
     int temp = 0;
@@ -28,8 +20,7 @@ class KeyboardCtrl {
     if (k>96) {
       temp = k-32;
     }
-    //boolean ret= (keys.contains(k)&&!oldKeys.contains(k))||(keys.contains(temp)&&!oldKeys.contains(temp));
-    boolean ret=false;
+    boolean ret= (keys.contains(k)&&!oldKeys.contains(k))||(keys.contains(temp)&&!oldKeys.contains(temp));
     return ret;
   }
   void keypress() {
