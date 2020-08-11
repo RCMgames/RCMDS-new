@@ -9,6 +9,7 @@ String error = null;
 float[] data = new float[16];
 boolean enabled = false;
 String setup = "";
+boolean ctrlPressed = false;
 
 void setup() {
   virtualKeyboardButton=new HashSet<Integer>();
@@ -67,6 +68,14 @@ void draw() {
     if (keyboardCtrl.justPressed(16)) {
       launch(dataPath("setup.txt"));
     }
+    
+    println(keyboardCtrl.keys);
+    println(keyboardCtrl.oldKeys1);
+    println(keyboardCtrl.oldKeys2);
+    println(keyboardCtrl.oldKeys3);
+    println(keyboardCtrl.oldKeys4);
+    println(keyboardCtrl.oldKeys5);
+    println("");
 
     if (keyboardCtrl.justPressed(18)) {
       if (fileExists(dataPath("setup.txt"))) {
@@ -104,5 +113,9 @@ void draw() {
     fill(200, 0, 0);
     text(setup, width/2, height/2);
   }
-  keyboardCtrl.clearKeys();
+  keyboardCtrl.oldKeys5=keyboardCtrl.oldKeys4;
+  keyboardCtrl.oldKeys4=keyboardCtrl.oldKeys3;
+  keyboardCtrl.oldKeys3=keyboardCtrl.oldKeys2;
+  keyboardCtrl.oldKeys2=keyboardCtrl.oldKeys1;
+  keyboardCtrl.oldKeys1=keyboardCtrl.keys;
 }
