@@ -3,8 +3,8 @@ Example template
 25211
 ping: ,var:ping;ip: ,var:ip;port: ,var:port;Battery:; ,var:volt, volts;;0: ,var:0;1: ,var:1;2: ,var:2;3: ,var:3;4: ,var:4
 
-4,2,Button 0,2,1,null,null,0
 3,1,Button 0,1,null,1,-1,null
+4,2,Button 0,2,1,null,null,0
 
 0,s,w,Y Axis,1,0.003,-1,1,true
 1,a,d,X Axis,1,0.003,-1,1,false

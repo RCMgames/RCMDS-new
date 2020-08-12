@@ -18,7 +18,11 @@ class UIIndicator {
     on = int(unhex("FF"+configData[6]));
     size = int(configData[7]);
   }
-  boolean run() {
+  boolean runVar() {
+
+    return true;
+  }
+  boolean runUI() {
 
     if (data[variable] >= min && data[variable] <= max) {
       fill(on);
