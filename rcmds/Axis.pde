@@ -44,33 +44,33 @@ class Axis {
 
     //spring
     if (type == 1) {
-      data[variable] = 0;
+      data[variable] = min+max/2;
 
-      if (keyboardCtrl.isPressed(keyboardKey1)) {
-          data[variable] = min;
+      if (keyboardCtrl.isPressed(keyboardKey1)||virtualKeyboardButton.contains(keyboardKey1)) {
+        data[variable] = min;
       }
 
-      if (keyboardCtrl.isPressed(keyboardKey2)) {
-          data[variable] = max;
+      if (keyboardCtrl.isPressed(keyboardKey2)||virtualKeyboardButton.contains(keyboardKey2)) {
+        data[variable] = max;
       }
 
-      if (data[variable] == 0) {
+      if ((((!keyboardCtrl.isPressed(keyboardKey1)&&!virtualKeyboardButton.contains(keyboardKey1))||keyboardKey1==0)&&((!keyboardCtrl.isPressed(keyboardKey2)&&!virtualKeyboardButton.contains(keyboardKey2))||keyboardKey2==0))&&!gamepadAxis.equals(null)) {
         if (invert) {
-          data[variable] = (max-min)/2*-gamepadVal(gamepadAxis, data[variable])+(max+min)/2;
+          data[variable] = map(gamepadVal(gamepadAxis, data[variable]), 1, -1, min, max);
         } else {
-          data[variable] = (max-min)/2*gamepadVal(gamepadAxis, data[variable])+(max+min)/2;
+          data[variable] = map(gamepadVal(gamepadAxis, data[variable]), -1, 1, min, max);
         }
       }
     }
 
     //sticky
     if (type == 2) {      
-      if (keyboardCtrl.isPressed(int(keyboardKey1))) {
-          data[variable] -= step;
+      if (keyboardCtrl.isPressed(keyboardKey1)||virtualKeyboardButton.contains(keyboardKey1)) {
+        data[variable] -= step;
       }
 
-      if (keyboardCtrl.isPressed(int(keyboardKey2))) {
-          data[variable] += step;
+      if (keyboardCtrl.isPressed(keyboardKey2)||virtualKeyboardButton.contains(keyboardKey2)) {
+        data[variable] += step;
       }
 
       if (abs(gamepadVal(gamepadAxis, 0)) > 0.15) {
@@ -81,12 +81,7 @@ class Axis {
         }
       }
 
-      if (data[variable]>max) {
-        data[variable]=max;
-      }
-      if (data[variable]<min) {
-        data[variable]=min;
-      }
+      data[variable]=constrain(data[variable], min, max);
     }
 
     //more?

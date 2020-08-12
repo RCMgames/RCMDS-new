@@ -36,15 +36,12 @@ class UIButton {
   }
   boolean runVar() {
     if (mousescreen.readPressed(mouseID)) {
-      virtualKeyboardButton.add(keyboardKey);
-      virtualGamepadButton.add(gamepadButton);
-    //} else {
-    //  if (virtualKeyboardButton.contains(keyboardKey)) {
-    //    virtualKeyboardButton.remove(keyboardKey);
-    //  }
-    //  if (virtualGamepadButton.contains(gamepadButton)) {
-    //    virtualGamepadButton.remove(gamepadButton);
-    //  }
+      if (keyboardKey!=0) {
+        virtualKeyboardButton.add(keyboardKey);
+      }
+      if (gamepadButton!=null) {
+        virtualGamepadButton.add(gamepadButton);
+      }
     }
 
     return true;

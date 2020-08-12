@@ -11,7 +11,7 @@ ping: ,var:ping;ip: ,var:ip;port: ,var:port;;0: ,var:0;1: ,var:1;2: ,var:2;3: ,v
 0,s,w,Y Axis,1,1,-1,1,true
 1,q,e,X Axis,1,1,-1,1,false
 2,a,d,X Rotation,1,1,-1,1,false
-4,g,t,Z Axis,2,0.03,-1,.75,true
+4,g,t,Z Axis,2,0.01,-1,.75,true
 
 v,Button 0,1,.7,.7,003366,004488,25
 f,Button 2,1,.7,.55,003366,004488,25
