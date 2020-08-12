@@ -140,7 +140,6 @@ void runTypeBox () {
           objectSetup(oldFile);
         }
         error = "Bad config file";
-        println(e);
       }
     } else {
       error = "File does not exist";

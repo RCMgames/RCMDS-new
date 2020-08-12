@@ -70,8 +70,6 @@ void draw() {
     }
 
     if (keyboardCtrl.justPressed(18)) {
-      println(keyboardCtrl.keys);
-      println(keyboardCtrl.oldKeys);
       if (fileExists(dataPath("setup.txt"))) {
         try {
           windowSetup("setup");
