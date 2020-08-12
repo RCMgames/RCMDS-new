@@ -133,6 +133,7 @@ void runTypeBox () {
       try {
         objectSetup(imput);
         oldFile=imput;
+        error = null;
       }
       catch (Throwable e) {
         if ( oldFile != null) {

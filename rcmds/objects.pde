@@ -73,9 +73,6 @@ void objectSetup(String file) {
     uisliders.add(new UISlider(line));//
     nums[5]++;
   }
-  if (oldFile != file) {
-    error = null;
-  }
 }
 
 void runObjects () {

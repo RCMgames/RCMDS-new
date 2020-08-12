@@ -85,6 +85,7 @@ void draw() {
       if (fileExists(dataPath(oldFile+".txt"))) {
         try {
           objectSetup(oldFile);
+          error = null;
         }
         catch (Throwable e) {
           error = "Bad config file";
