@@ -108,4 +108,6 @@ void draw() {
     text(setup, width/2, height/2);
   }
   keyboardCtrl.oldKeys=(HashSet)keyboardCtrl.keys.clone();
+  virtualKeyboardButton.clear();
+  virtualGamepadButton.clear();
 }

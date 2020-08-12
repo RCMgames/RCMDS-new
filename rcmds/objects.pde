@@ -79,14 +79,14 @@ void objectSetup(String file) {
 }
 
 void runObjects () {
+  for (int i=0; i<nums[2]; i++) {
+    uibuttons.get(i).runVar();
+  }
   for (int i=0; i<nums[0]; i++) {
     buttons.get(i).run();
   }
   for (int i=0; i<nums[1]; i++) {
     axes.get(i).run();
-  }
-  for (int i=0; i<nums[2]; i++) {
-    uibuttons.get(i).runVar();
   }
   for (int i=0; i<nums[3]; i++) {
     uiindicators.get(i).runVar();

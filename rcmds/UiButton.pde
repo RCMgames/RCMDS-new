@@ -38,13 +38,13 @@ class UIButton {
     if (mousescreen.readPressed(mouseID)) {
       virtualKeyboardButton.add(keyboardKey);
       virtualGamepadButton.add(gamepadButton);
-    } else {
-      if (virtualKeyboardButton.contains(keyboardKey)) {
-        virtualKeyboardButton.remove(keyboardKey);
-      }
-      if (virtualGamepadButton.contains(gamepadButton)) {
-        virtualGamepadButton.remove(gamepadButton);
-      }
+    //} else {
+    //  if (virtualKeyboardButton.contains(keyboardKey)) {
+    //    virtualKeyboardButton.remove(keyboardKey);
+    //  }
+    //  if (virtualGamepadButton.contains(gamepadButton)) {
+    //    virtualGamepadButton.remove(gamepadButton);
+    //  }
     }
 
     return true;
