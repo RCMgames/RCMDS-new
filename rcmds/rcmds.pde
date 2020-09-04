@@ -1,4 +1,4 @@
-//v1.2
+//v1.3
 
 HashSet<Integer> virtualKeyboardButton;
 HashSet<String> virtualGamepadButton;
@@ -6,10 +6,12 @@ String[] Window;
 String imput = "example";
 String oldFile;
 String error = null;
-float[] data = new float[16];
 boolean enabled = false;
 String setup = "";
 boolean ctrlPressed = false;
+final int numCtrl=16; //how many variables for controlling the robot are sent
+final int numRecv=8;  //how many variables are recieved, including battery
+float[] data = new float[numCtrl+numRecv];
 
 void setup() {
   virtualKeyboardButton=new HashSet<Integer>();
@@ -55,8 +57,8 @@ void draw() {
     enabled=runEnableSwitch(enabled);
     runObjects();
     runTypeBox();
-    batVolts.run(nf(data[8], 0, 2)+" V");
-    batGraph.run(data[8]);
+    batVolts.run(nf(data[numCtrl], 0, 2)+" V");
+    batGraph.run(data[numCtrl]);
     sendWifiData(true);
     robotName.run("Name: "+name);
     dispTelem.run(msg);

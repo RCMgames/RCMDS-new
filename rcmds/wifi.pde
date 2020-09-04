@@ -1,9 +1,9 @@
 import hypermedia.net.*;
 int wifiPort=25210;
 String wifiIP="10.25.21.1";
-byte arrayToSend[]=new byte[255];
+byte arrayToSend[]=new byte[4*numCtrl+8];
 byte wifiArrayCounter=0;
-int arrayRecvd[]=new int [255];
+int arrayRecvd[]=new int [4*numRecv+8];
 UDP udp;
 long wifiReceivedMillis=0;
 long wifiSentMillis=0;
@@ -20,7 +20,7 @@ void sendWifiData(boolean t) {
     wifiArrayCounter=0;
 
     sendBl(enabled);
-    for (int i=0; i<8; i++) {
+    for (int i=0; i<numCtrl; i++) {
       sendFl(data[i]);
     }
 
@@ -33,11 +33,11 @@ void sendWifiData(boolean t) {
 }
 void receive( byte[] wifidatareceived, String ip, int port ) {//wifi event handler
   wifiReceivedMillis=millis();
-  for (int i=0; i<data.length; i++) {
+  for (int i=0; i<wifidatareceived.length; i++) {
     arrayRecvd[i]=(256+wifidatareceived[i])%256;
   }
   wifiArrayCounter=0;
-  for (int i=8; i<16; i++) {
+  for (int i=numCtrl; i<numCtrl+wifidatareceived.length/4; i++) {
     data[i]=recvFl();
   }
   sendWifiData(false);
