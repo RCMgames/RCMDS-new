@@ -1,4 +1,4 @@
-//v1.2
+//v1.3
 
 HashSet<Integer> virtualKeyboardButton;
 HashSet<String> virtualGamepadButton;
@@ -6,43 +6,49 @@ String[] Window;
 String imput = "example";
 String oldFile;
 String error = null;
-float[] data = new float[16];
 boolean enabled = false;
 String setup = "";
 boolean ctrlPressed = false;
+int numCtrl=16; //how many variables for controlling the robot are sent
+int numRecv=8;  //how many variables are recieved, including battery
+float[] data = new float[numCtrl+numRecv];
 
 void setup() {
   virtualKeyboardButton=new HashSet<Integer>();
   virtualGamepadButton=new HashSet<String>();
+  windowSetup("setup");
 
-  if (fileExists(dataPath("setup.txt"))) {
-    try {
-      windowSetup("setup");
-    }
-    catch (Throwable e) {
-      setup = "bad setup file";
-    }
-  } else {
-    setup = "missing setup file";
-  }
+  //if (fileExists(dataPath("setup.txt"))) {
+  //  try {
+  //    windowSetup("setup");
+  //  }
+  //  catch (Throwable e) {
+  //    setup = "bad setup file";
+  //    println(e);
+  //  }
+  //} else {
+  //  setup = "missing setup file";
+  //}
 
   if (setup.equals("")) {
     udp = new UDP(this);
     udp.listen(true);
-
-    if (fileExists(dataPath(imput+".txt"))) {
-      try {
-        objectSetup(imput);
-        oldFile=imput;
-      }
-      catch (Throwable e) {
-        error = "Bad config file";
-        name = "error";
-      }
-    } else {
-      error = "File does not exist";
-      name = "error";
-    }
+    objectSetup(imput);
+    
+    //if (fileExists(dataPath(imput+".txt"))) {
+    //  try {
+    //    objectSetup(imput);
+    //    oldFile=imput;
+    //  }
+    //  catch (Throwable e) {
+    //    error = "Bad config file";
+    //    name = "error";
+    //    println(e);
+    //  }
+    //} else {
+    //  error = "File does not exist";
+    //  name = "error";
+    //}
   }
 }
 
@@ -55,8 +61,8 @@ void draw() {
     enabled=runEnableSwitch(enabled);
     runObjects();
     runTypeBox();
-    batVolts.run(nf(data[8], 0, 2)+" V");
-    batGraph.run(data[8]);
+    batVolts.run(nf(data[numCtrl], 0, 2)+" V");
+    batGraph.run(data[numCtrl]);
     sendWifiData(true);
     robotName.run("Name: "+name);
     dispTelem.run(msg);
@@ -70,34 +76,41 @@ void draw() {
     }
 
     if (keyboardCtrl.justPressed(18)) {
-      if (fileExists(dataPath("setup.txt"))) {
-        try {
-          windowSetup("setup");
-        }
-        catch (Throwable e) {
-          setup = "bad setup file";
-        }
-      } else {
-        setup = "missing setup file";
-      }
-      if (fileExists(dataPath(oldFile+".txt"))) {
-        try {
-          objectSetup(oldFile);
-          error = null;
-        }
-        catch (Throwable e) {
-          error = "Bad config file";
-          name = "error";
-        }
-      } else {
-        error = "File does not exist";
-        name = "error";
-      }
+      windowSetup("setup");
+      //if (fileExists(dataPath("setup.txt"))) {
+      //  try {
+      //    windowSetup("setup");
+      //  }
+      //  catch (Throwable e) {
+      //    setup = "bad setup file";
+      //    println(e);
+      //  }
+      //} else {
+      //  setup = "missing setup file";
+      //}
+      objectSetup(oldFile);
+      //if (fileExists(dataPath(oldFile+".txt"))) {
+      //  try {
+      //    objectSetup(oldFile);
+      //    error = null;
+      //  }
+      //  catch (Throwable e) {
+      //    error = "Bad config file";
+      //    name = "error";
+      //    println(e);
+      //  }
+      //} else {
+      //  error = "File does not exist";
+      //  name = "error";
+      //}
     }
 
     if (!focused) {
       enabled = false;
     }
+    keyboardCtrl.oldKeys=(HashSet)keyboardCtrl.keys.clone();
+  virtualKeyboardButton.clear();
+  virtualGamepadButton.clear();
   } else {
     surface.setSize(300, 50);
     textSize(30);
@@ -106,7 +119,4 @@ void draw() {
     fill(200, 0, 0);
     text(setup, width/2, height/2);
   }
-  keyboardCtrl.oldKeys=(HashSet)keyboardCtrl.keys.clone();
-  virtualKeyboardButton.clear();
-  virtualGamepadButton.clear();
 }

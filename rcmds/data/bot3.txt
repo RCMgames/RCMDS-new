@@ -2,6 +2,7 @@ shooter
 73.37.49.126
 25213
 ping: ,var:ping;ip: ,var:ip;port: ,var:port;;0: ,var:0;1: ,var:1;2: ,var:2;3: ,var:3;4: ,var:4;5: ,var:5;6: ,var:6;8: ,var:8;9: ,var:9;10: ,var:10;11: ,var:11;12: ,var:12
+8,8
 
 3,j,Button 1,1,null,-1,-.4,null
 3,u,Button 5,1,null,1,-.4,,null

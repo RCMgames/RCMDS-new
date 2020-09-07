@@ -44,7 +44,7 @@ class Axis {
 
     //spring
     if (type == 1) {
-      data[variable] = min+max/2;
+      data[variable] = (min+max)/2;
 
       if (keyboardCtrl.isPressed(keyboardKey1)||virtualKeyboardButton.contains(keyboardKey1)) {
         data[variable] = min;

@@ -36,9 +36,9 @@ class DisplayTelemetry {
             } else if (telemData[j].substring(4, telemData[j].length()).equals("ping")) {
               text = text + str(wifiPing);
             } else if (telemData[j].substring(4, telemData[j].length()).equals("volt")) {
-              text = text + nf(data[8], 0, 4);
+              text = text + nf(data[numCtrl], 0, 4);
             } else {
-              text = text + str(data[int(telemData[j].substring(4, telemData[j].length()))]);
+              text = text + nf(data[int(telemData[j].substring(4, telemData[j].length()))], 1, 4);
             }
           } else {
             text = text + telemData[j];
