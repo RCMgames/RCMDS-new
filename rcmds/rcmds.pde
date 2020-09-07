@@ -9,8 +9,8 @@ String error = null;
 boolean enabled = false;
 String setup = "";
 boolean ctrlPressed = false;
-final int numCtrl=16; //how many variables for controlling the robot are sent
-final int numRecv=8;  //how many variables are recieved, including battery
+int numCtrl=16; //how many variables for controlling the robot are sent
+int numRecv=8;  //how many variables are recieved, including battery
 float[] data = new float[numCtrl+numRecv];
 
 void setup() {
@@ -23,6 +23,7 @@ void setup() {
     }
     catch (Throwable e) {
       setup = "bad setup file";
+      println(e);
     }
   } else {
     setup = "missing setup file";
@@ -40,6 +41,7 @@ void setup() {
       catch (Throwable e) {
         error = "Bad config file";
         name = "error";
+        println(e);
       }
     } else {
       error = "File does not exist";
@@ -78,6 +80,7 @@ void draw() {
         }
         catch (Throwable e) {
           setup = "bad setup file";
+          println(e);
         }
       } else {
         setup = "missing setup file";
@@ -90,6 +93,7 @@ void draw() {
         catch (Throwable e) {
           error = "Bad config file";
           name = "error";
+          println(e);
         }
       } else {
         error = "File does not exist";

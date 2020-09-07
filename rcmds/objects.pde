@@ -31,12 +31,16 @@ void objectSetup(String file) {
 
   msg=split(config[3], ";");
 
-  for (int i=0; i<16; i++) {
+
+numCtrl = int(split(config[4], ',')[0]);
+numRecv = int(split(config[4], ',')[1]);
+
+  for (int i=0; i<numCtrl+numRecv; i++) {
     if (i<6)nums[i]=0;
     data[i]=0;
   }
 
-  int a=5;
+  int a=6;
 
   for (; !config[a].equals(""); a++) {
     line = split(config[a], ',');
