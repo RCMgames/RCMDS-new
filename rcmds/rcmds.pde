@@ -3,7 +3,7 @@
 HashSet<Integer> virtualKeyboardButton;
 HashSet<String> virtualGamepadButton;
 String[] Window;
-String imput = "example1";
+String imput = "example";
 String oldFile;
 String error = null;
 boolean enabled = false;
@@ -16,7 +16,7 @@ float[] data = new float[numCtrl+numRecv];
 void setup() {
   virtualKeyboardButton=new HashSet<Integer>();
   virtualGamepadButton=new HashSet<String>();
-  windowSetup("setup2");
+  windowSetup("setup");
 
   //if (fileExists(dataPath("setup.txt"))) {
   //  try {
