@@ -37,7 +37,7 @@ void receive( byte[] wifidatareceived, String ip, int port ) {//wifi event handl
     arrayRecvd[i]=(256+wifidatareceived[i])%256;
   }
   wifiArrayCounter=0;
-  for (int i=numCtrl; i<numCtrl+wifidatareceived.length/4; i++) {
+  for (int i=numCtrl; i<numCtrl+min(numRecv,wifidatareceived.length/4); i++) {
     data[i]=recvFl();
   }
   sendWifiData(false);
