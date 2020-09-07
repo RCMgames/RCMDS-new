@@ -17,38 +17,10 @@ void setup() {
   virtualKeyboardButton=new HashSet<Integer>();
   virtualGamepadButton=new HashSet<String>();
   windowSetup("setup");
-
-  //if (fileExists(dataPath("setup.txt"))) {
-  //  try {
-  //    windowSetup("setup");
-  //  }
-  //  catch (Throwable e) {
-  //    setup = "bad setup file";
-  //    println(e);
-  //  }
-  //} else {
-  //  setup = "missing setup file";
-  //}
-
   if (setup.equals("")) {
     udp = new UDP(this);
     udp.listen(true);
     objectSetup(imput);
-    
-    //if (fileExists(dataPath(imput+".txt"))) {
-    //  try {
-    //    objectSetup(imput);
-    //    oldFile=imput;
-    //  }
-    //  catch (Throwable e) {
-    //    error = "Bad config file";
-    //    name = "error";
-    //    println(e);
-    //  }
-    //} else {
-    //  error = "File does not exist";
-    //  name = "error";
-    //}
   }
 }
 
@@ -77,32 +49,7 @@ void draw() {
 
     if (keyboardCtrl.justPressed(18)) {
       windowSetup("setup");
-      //if (fileExists(dataPath("setup.txt"))) {
-      //  try {
-      //    windowSetup("setup");
-      //  }
-      //  catch (Throwable e) {
-      //    setup = "bad setup file";
-      //    println(e);
-      //  }
-      //} else {
-      //  setup = "missing setup file";
-      //}
       objectSetup(oldFile);
-      //if (fileExists(dataPath(oldFile+".txt"))) {
-      //  try {
-      //    objectSetup(oldFile);
-      //    error = null;
-      //  }
-      //  catch (Throwable e) {
-      //    error = "Bad config file";
-      //    name = "error";
-      //    println(e);
-      //  }
-      //} else {
-      //  error = "File does not exist";
-      //  name = "error";
-      //}
     }
 
     if (!focused) {

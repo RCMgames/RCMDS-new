@@ -130,21 +130,6 @@ void runTypeBox () {
   imput=configTypeBox.run(imput);
   if (wasTypeBoxActive && !typeBoxActive) {
     objectSetup(imput);
-    //if (fileExists(dataPath(imput+".txt"))) {
-    //  try {
-    //    objectSetup(imput);
-    //    oldFile=imput;
-    //    error = null;
-    //  }
-    //  catch (Throwable e) {
-    //    if ( oldFile != null) {
-    //      objectSetup(oldFile);
-    //    }
-    //    error = "Bad config file";
-    //  }
-    //} else {
-    //  error = "File does not exist";
-    //}
   }
   //textSize(height/20);
   if (error != null) {
