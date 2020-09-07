@@ -32,8 +32,10 @@ void objectSetup(String file) {
   msg=split(config[3], ";");
 
 
-numCtrl = int(split(config[4], ',')[0]);
-numRecv = int(split(config[4], ',')[1]);
+  numCtrl = int(split(config[4], ',')[0]);
+  numRecv = int(split(config[4], ',')[1]);
+  arrayToSend=new byte[4*numCtrl+8];
+  arrayRecvd=new int [4*numRecv+8];
 
   for (int i=0; i<numCtrl+numRecv; i++) {
     if (i<6)nums[i]=0;

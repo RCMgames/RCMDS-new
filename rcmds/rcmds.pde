@@ -23,7 +23,7 @@ void setup() {
     }
     catch (Throwable e) {
       setup = "bad setup file";
-      println(e);
+      e.printStackTrace();
     }
   } else {
     setup = "missing setup file";
@@ -41,7 +41,7 @@ void setup() {
       catch (Throwable e) {
         error = "Bad config file";
         name = "error";
-        println(e);
+        e.printStackTrace();
       }
     } else {
       error = "File does not exist";
@@ -80,7 +80,7 @@ void draw() {
         }
         catch (Throwable e) {
           setup = "bad setup file";
-          println(e);
+          e.printStackTrace();
         }
       } else {
         setup = "missing setup file";
@@ -93,7 +93,7 @@ void draw() {
         catch (Throwable e) {
           error = "Bad config file";
           name = "error";
-          println(e);
+          e.printStackTrace();
         }
       } else {
         error = "File does not exist";
