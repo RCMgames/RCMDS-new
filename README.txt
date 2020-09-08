@@ -3,10 +3,11 @@ Setup lines: 1-5
 1: robot name
 2: ip
 3: port
-4: telemetry data
-5: free line
+4: telemetry data (see below)
+5: number of sent variables,number of recieved variables
+6: free line
 
-Object lines: 6-
+Object lines: 7-
 	list groups of objects in order:
 		1:Buttons
 		2:Axes
@@ -52,9 +53,9 @@ Buttons: variable,keyboardKey,gamepadButton,type,onHold,onPressed,onReleased,onO
 	variable: int [0 to 7]
 		determines which variable is being modified
 	keyboardKey: letter or number
-		determines which key activates button
+		determines which key activates button (can be left blank)
 	gamepadButton: (look up documentation)
-		determines which gamepad button activates button
+		determines which gamepad button activates button (can be left blank)
 	type: int [1 or 2]
 		determines the behavior of button
 			1: standard button
@@ -72,11 +73,11 @@ Axes: variable,keyboardKey1,keyboardKey2,gamepadAxis,type,step,min,max,inverted
 	variable: int [0 to 7]
 		determines which output is being modified
 	keyboardKey1: letter or number
-		determines the negative key
+		determines the negative key (can be left blank)
 	keyboardKey1: letter or number
-		determines the positive key
+		determines the positive key (can be left blank)
 	gamepadAxis: (look up documentation)
-		determines which gamepad axis controls the axis
+		determines which gamepad axis controls the axis (can be left blank)
 	type: int [1 or 2] (or more if we add more modes)
 		determines the behavior of axis
 			1: returns to 0
@@ -92,9 +93,9 @@ Axes: variable,keyboardKey1,keyboardKey2,gamepadAxis,type,step,min,max,inverted
 
 UIButtons: keyboardKey,gamepadButton,type,x,y,color1,color2,size
 	keyboardKey: letter or number
-		determines which key activates button
+		determines which key activates button (can be left blank)
 	gamepadButton: (look up documentation)
-		determines which gamepad button activates button
+		determines which gamepad button activates button (can be left blank)
 	type: int [1 or 2]
 		determines the behavior of button
 			1: standard button
@@ -118,15 +119,15 @@ UIIndicator: variable,min,max,x,y,color1,color2,size
 	max:
 		sets maximum for indtcated range
 	x: float [0 to 1]
-		determines how far left/right button appears (0 is left, 1 is right)
+		determines how far left/right indicator appears (0 is left, 1 is right)
 	y: float [0 to 1]
-		determines how far up/down button appears (0 is up, 1 is down)
+		determines how far up/down indicator appears (0 is up, 1 is down)
 	color1: RGB hex value
-		determines the color of button when activated
+		determines the color of indicator when activated
 	color2: RGB hex value
-		determines the color of button when not activated
+		determines the color of indicator when not activated
 	size: int
-		determines size of button
+		determines size of indicator
 
 UIJoysticks: xVariable,yVariable,x,y,color,size
 	xVariable: int [0 to 15]
@@ -161,6 +162,20 @@ UISliders: variable,min,max,x,y,color,orientation,size
 			2: horizontal
 	size: int
 		determines size of slider
+		
+Telemetry Data:
+telemetry data can be changed on a per-robot basis
+different lines are separated with a semicolon (;), while different elements within the same line are separated with a comma.
+to display a string just type the string, to display a variable, type 'var:' then the variable name/number
+variables that rcmds recognises:
+	ip: displays the robot's ip
+	port: displays the robot's port
+	ping: displays the robot's ping
+	volt: displays the robot's battery voltage
+	[any number]: displays that variable (var:0 displays variable 0)
+to have a blank line you can put two semicolons next to eachother
+example telemetry line:
+ping: ,var:ping;ip: ,var:ip;port: ,var:port;Battery:; ,var:volt, volts;;0: ,var:0;1: ,var:1;2: ,var:2;3: ,var:3;4: ,var:4
 
 window size and layout can be changed in the setup.txt file
 ask weston or joshua if you want to edit that
