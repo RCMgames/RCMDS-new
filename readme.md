@@ -62,8 +62,8 @@ numerically, output variables come after imput ones
 		- determines which gamepad button activates button (can be left blank)
 	- type: `int`
 		- determines the behavior of button
-			1. standard button
-			2. toggle button
+			1: standard button
+			2: toggle button
 	- onHold: `float` 
 		- determines what number to set the specified output to while button is activated
 	- onPressed: `float`
@@ -84,8 +84,8 @@ numerically, output variables come after imput ones
 		- determines which gamepad axis controls the axis (can be left blank)
 	- type: `int`
 		- determines the behavior of axis
-			1. returns to 0
-			2. stays on value
+			1: returns to 0
+			2: stays on value
 	- step: `float`
 		- determines how fast type 2 axis can change value
 	- min: `float`
@@ -102,8 +102,8 @@ numerically, output variables come after imput ones
 		- determines which gamepad button activates button (can be left blank)
 	- type: `int`
 		- determines the behavior of button
-			1. standard button
-			2. toggle button
+			1: standard button
+			2: toggle button
 	- x: `float`
 		- determines how far left/right button appears (0 is left, 1 is right)
 	- y: `float`
@@ -162,8 +162,8 @@ numerically, output variables come after imput ones
 		- determines background color of slider
 	- orientation: `int`
 		- determines orientation of slider (will possibly add variable angles in future)
-			1. vertical
-			2. horizontal
+			1: vertical
+			2: horizontal
 	- size: `int`
 		- determines size of slider
 ---
