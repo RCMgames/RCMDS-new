@@ -3,8 +3,8 @@ class UIButton {
   int keyboardKey;
   String gamepadButton;
   int type;
-  float posX;
-  float posY;
+  int posX;
+  int posY;
   color on;
   color off;
   int size;
@@ -27,12 +27,12 @@ class UIButton {
       gamepadButton = null;
     }
     type = int(configData[2]);
-    posX = float(configData[3]);
-    posY = float(configData[4]);
+    posX = int(float(configData[3])*width);
+    posY = int(float(configData[4])*height);
     on = int(unhex("FF"+configData[5]));
     off = int(unhex("FF"+configData[6]));
     size = int(configData[7]);
-    mouseID=mousescreen.registerZone(posX*width, posY*height, size, size);
+    mouseID=mousescreen.registerZone(posX, posY, size, size);
   }
   boolean runVar() {
     if (mousescreen.readPressed(mouseID)) {
@@ -62,7 +62,7 @@ class UIButton {
     } else {
       fill (off);
     }
-    rect(posX*width, posY*height, size, size, size/4);
+    rect(posX, posY, size, size, size/4);
 
     return true;
   }

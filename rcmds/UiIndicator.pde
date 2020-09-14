@@ -3,8 +3,8 @@ class UIIndicator {
   int variable;
   float min;
   float max;
-  float posX;
-  float posY;
+  int posX;
+  int posY;
   color off;
   color on;
   int size;
@@ -12,8 +12,8 @@ class UIIndicator {
     variable = int(configData[0]);
     min = float(configData[1]);
     max = float(configData[2]);
-    posX = float(configData[3]);
-    posY = float(configData[4]);
+    posX = int(float(configData[3])*width);
+    posY = int(float(configData[4])*height);
     off = int(unhex("FF"+configData[5]));
     on = int(unhex("FF"+configData[6]));
     size = int(configData[7]);
@@ -29,7 +29,7 @@ class UIIndicator {
     } else {
       fill (off);
     }
-    circle(posX*width, posY*height, size);
+    circle(posX, posY, size);
 
     return true;
   }

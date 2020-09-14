@@ -3,8 +3,8 @@ class UISlider {
   int variable;
   float min;
   float max;
-  float posX;
-  float posY;
+  int posX;
+  int posY;
   color rgb;
   int rotation;
   int size;
@@ -14,15 +14,15 @@ class UISlider {
     variable = int(configData[0]);
     min = float(configData[1]);
     max = float(configData[2]);
-    posX = float(configData[3]);
-    posY = float(configData[4]);
+    posX = int(float(configData[3])*width);
+    posY = int(float(configData[4])*height);
     rgb = int(unhex("FF"+configData[5]));
     rotation = int(configData[6]);
     size = int(configData[7]);
     if (rotation==2) {
-      mouseID=mousescreen.registerZone(int(posX*width), int(posY*height), size*5.25, size);
+      mouseID=mousescreen.registerZone(int(posX), int(posY), size*5.25, size);
     } else {//horiz
-      mouseID=mousescreen.registerZone(int(posX*width), int(posY*height), size, size*5.25);
+      mouseID=mousescreen.registerZone(int(posX), int(posY), size, size*5.25);
     }
   }
   boolean runVar() {
@@ -41,21 +41,21 @@ class UISlider {
     fill(rgb);
     //vertical
     if (rotation == 1) {
-      rect(int(posX*width), int(posY*height), size, int(5.25*size), size/4);
+      rect(int(posX), int(posY), size, int(5.25*size), size/4);
       fill(255);
       stroke(10);
       position = constrain(norm(data[variable], min, max), 0, 1);
-      rect(int(posX*width), int(posY*height-2.5*size*(2*position-1)), size+1, int(size/5));
+      rect(int(posX), int(posY-2.5*size*(2*position-1)), size+1, int(size/5));
       noStroke();
     }
 
     //horizontal
     if (rotation == 2) {
-      rect(int(posX*width), int(posY*height), int(5.25*size), size, size/4);
+      rect(int(posX), int(posY), int(5.25*size), size, size/4);
       fill(255);
       stroke(10);
       position = constrain(norm(data[variable], min, max), 0, 1);
-      rect(int(posX*width+2.5*size*(2*position-1)), int(posY*height), int(size/5), size+1);
+      rect(int(posX+2.5*size*(2*position-1)), int(posY), int(size/5), size+1);
       noStroke();
     }
     return true;
