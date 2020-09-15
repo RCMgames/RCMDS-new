@@ -1,4 +1,4 @@
-//v1.3
+//v1.3.1
 
 HashSet<Integer> virtualKeyboardButton;
 HashSet<String> virtualGamepadButton;
@@ -56,8 +56,8 @@ void draw() {
       enabled = false;
     }
     keyboardCtrl.oldKeys=(HashSet)keyboardCtrl.keys.clone();
-  virtualKeyboardButton.clear();
-  virtualGamepadButton.clear();
+    virtualKeyboardButton.clear();
+    virtualGamepadButton.clear();
   } else {
     surface.setSize(300, 50);
     textSize(30);

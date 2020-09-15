@@ -2,7 +2,7 @@ Rotifer
 10.0.0.138
 25211
 ping: ,var:ping;ip: ,var:ip;port: ,var:port;;f/b: ,var:0;trim: ,var:1;l/r: ,var:2;lift: ,var:3;climb: ,var:4;intake: ,var:5;eject: ,var:6
-6,1
+7,1
 
 3,u,,1,,1,,
 3,j,,1,,-.4,,
