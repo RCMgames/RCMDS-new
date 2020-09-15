@@ -29,11 +29,11 @@ class Axis {
     } else {
       keyboardKey2 = 0;
     }
-    if (!configData[3].equals("")) {
+    //if (!configData[3].equals("")) {
       gamepadAxis = configData[3];
-    } else {
-      gamepadAxis = null;
-    }
+    //} else {
+    //  gamepadAxis = "";
+    //}
     type = int(configData[4]);
     step = float(configData[5]);
     min = float(configData[6]);
@@ -54,7 +54,7 @@ class Axis {
         data[variable] = max;
       }
 
-      if ((((!keyboardCtrl.isPressed(keyboardKey1)&&!virtualKeyboardButton.contains(keyboardKey1))||keyboardKey1==0)&&((!keyboardCtrl.isPressed(keyboardKey2)&&!virtualKeyboardButton.contains(keyboardKey2))||keyboardKey2==0))&&!gamepadAxis.equals(null)) {
+      if ((((!keyboardCtrl.isPressed(keyboardKey1)&&!virtualKeyboardButton.contains(keyboardKey1))||keyboardKey1==0)&&((!keyboardCtrl.isPressed(keyboardKey2)&&!virtualKeyboardButton.contains(keyboardKey2))||keyboardKey2==0))&&!gamepadAxis.equals("")) {
         if (invert) {
           data[variable] = map(gamepadVal(gamepadAxis, data[variable]), 1, -1, min, max);
         } else {

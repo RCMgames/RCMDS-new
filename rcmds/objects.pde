@@ -40,14 +40,13 @@ void objectSetup(String file) {
       arrayToSend=new byte[4*numCtrl+8];
       arrayRecvd=new int [4*numRecv+8];
 
-
       for (int i=0; i<numCtrl+numRecv; i++) {
-        if (i<6)nums[i]=0;
         data[i]=0;
       }
       
       int a=6;
-
+      nums = new int[6];
+      
       for (; !config[a].equals(""); a++) {
         line = split(config[a], ',');
         buttons.add(new Button(line));
@@ -101,7 +100,9 @@ void objectSetup(String file) {
 }
 
 void runObjects () {
+  println(nums);
   for (int i=0; i<nums[2]; i++) {
+    println("test");
     uibuttons.get(i).runVar();
   }
   for (int i=0; i<nums[1]; i++) {
