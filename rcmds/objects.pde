@@ -43,10 +43,10 @@ void objectSetup(String file) {
       for (int i=0; i<numCtrl+numRecv; i++) {
         data[i]=0;
       }
-      
+
       int a=6;
       nums = new int[6];
-      
+
       for (; !config[a].equals(""); a++) {
         line = split(config[a], ',');
         buttons.add(new Button(line));
@@ -98,11 +98,9 @@ void objectSetup(String file) {
     println("File not found");
   }
 }
-
+  
 void runObjects () {
-  println(nums);
   for (int i=0; i<nums[2]; i++) {
-    println("test");
     uibuttons.get(i).runVar();
   }
   for (int i=0; i<nums[1]; i++) {
