@@ -32,7 +32,7 @@ class Axis {
     //if (!configData[3].equals("")) {
       gamepadAxis = configData[3];
     //} else {
-    //  gamepadAxis = "";
+    //  gamepadAxis = null;
     //}
     type = int(configData[4]);
     step = float(configData[5]);
@@ -42,19 +42,20 @@ class Axis {
   }
   boolean run() {
 
-    //spring
+    //rtc
     if (type == 1) {
       data[variable] = (min+max)/2;
 
-      if (keyboardCtrl.isPressed(keyboardKey1)||virtualKeyboardButton.contains(keyboardKey1)) {
+      if (keyboardCtrl.isPressed(keyboardKey1) || virtualKeyboardButton.contains(keyboardKey1)) {
         data[variable] = min;
       }
 
-      if (keyboardCtrl.isPressed(keyboardKey2)||virtualKeyboardButton.contains(keyboardKey2)) {
+      if (keyboardCtrl.isPressed(keyboardKey2) || virtualKeyboardButton.contains(keyboardKey2)) {
         data[variable] = max;
       }
 
-      if ((((!keyboardCtrl.isPressed(keyboardKey1)&&!virtualKeyboardButton.contains(keyboardKey1))||keyboardKey1==0)&&((!keyboardCtrl.isPressed(keyboardKey2)&&!virtualKeyboardButton.contains(keyboardKey2))||keyboardKey2==0))&&!gamepadAxis.equals("")) {
+      //if ((((!keyboardCtrl.isPressed(keyboardKey1) && !virtualKeyboardButton.contains(keyboardKey1)) || keyboardKey1==0) && ((!keyboardCtrl.isPressed(keyboardKey2) && !virtualKeyboardButton.contains(keyboardKey2)) || keyboardKey2==0)) && !gamepadAxis.equals("")) {
+        if (((!keyboardCtrl.isPressed(keyboardKey1) && !virtualKeyboardButton.contains(keyboardKey1)) || keyboardKey1==0) && ((!keyboardCtrl.isPressed(keyboardKey2) && !virtualKeyboardButton.contains(keyboardKey2)) || keyboardKey2==0)) {
         if (invert) {
           data[variable] = map(gamepadVal(gamepadAxis, data[variable]), 1, -1, min, max);
         } else {
@@ -63,13 +64,13 @@ class Axis {
       }
     }
 
-    //sticky
+    //hold
     if (type == 2) {      
-      if (keyboardCtrl.isPressed(keyboardKey1)||virtualKeyboardButton.contains(keyboardKey1)) {
+      if (keyboardCtrl.isPressed(keyboardKey1) || virtualKeyboardButton.contains(keyboardKey1)) {
         data[variable] -= step;
       }
 
-      if (keyboardCtrl.isPressed(keyboardKey2)||virtualKeyboardButton.contains(keyboardKey2)) {
+      if (keyboardCtrl.isPressed(keyboardKey2) || virtualKeyboardButton.contains(keyboardKey2)) {
         data[variable] += step;
       }
 

@@ -22,11 +22,11 @@ class Button {
     } else {
       keyboardKey = 0;
     }
-    if (!configData[2].equals("")) {
+    //if (!configData[2].equals("")) {
       gamepadButton = configData[2];
-    } else {
-      gamepadButton = null;
-    }
+    //} else {
+    //  gamepadButton = null;
+    //}
     type = int(configData[3]);
     onHold = float(configData[4]);
     onPressed = float(configData[5]);
@@ -36,12 +36,12 @@ class Button {
   boolean run() {
 
     if (type == 1) {
-      pressed = keyboardCtrl.isPressed(keyboardKey) || gamepadButton(gamepadButton, false)||virtualKeyboardButton.contains(keyboardKey)||virtualGamepadButton.contains(gamepadButton);
+      pressed = keyboardCtrl.isPressed(keyboardKey) || gamepadButton(gamepadButton, false) || virtualKeyboardButton.contains(keyboardKey) || virtualGamepadButton.contains(gamepadButton);
     } else {
-      if ((keyboardCtrl.isPressed(keyboardKey) || gamepadButton(gamepadButton, false)||virtualKeyboardButton.contains(keyboardKey)||virtualGamepadButton.contains(gamepadButton)) && !wasKeyPressed) {
+      if ((keyboardCtrl.isPressed(keyboardKey) || gamepadButton(gamepadButton, false) || virtualKeyboardButton.contains(keyboardKey) || virtualGamepadButton.contains(gamepadButton)) && !wasKeyPressed) {
         pressed = !pressed;
       }
-      wasKeyPressed = keyboardCtrl.isPressed(keyboardKey) || gamepadButton(gamepadButton, false)||virtualKeyboardButton.contains(keyboardKey)||virtualGamepadButton.contains(gamepadButton);
+      wasKeyPressed = keyboardCtrl.isPressed(keyboardKey) || gamepadButton(gamepadButton, false)|| virtualKeyboardButton.contains(keyboardKey) || virtualGamepadButton.contains(gamepadButton);
     }
 
     if (pressed && wasPressed && !Float.isNaN(onHold)) {

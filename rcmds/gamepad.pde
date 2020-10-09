@@ -17,11 +17,13 @@ void setupGamepad(String device) {
     //}
     //gpad=control.getDevice(gpad.getName());
     if (gpad == null) {
+      println("gamepad disabled err:1");
       gamepadAvail=false;
       return;
     }
   }
   catch(Exception e) {
+    println("gamepad disabled err:2");
     gamepadAvail=false;
     return;
   }
@@ -35,11 +37,13 @@ void setupGamepad(String device) {
   //}
 }
 float gamepadVal(String a, float v) {
-  if (gamepadAvail&&a!=null) {
+  if (gamepadAvail&&!a.equals(null)&&!a.equals("")&&!a.equals("null")) {
     try {
       return gpad.getSlider(a).getValue();
     }
     catch(NullPointerException n) {
+      println(a);
+      println("gamepad disabled err:3");
       gamepadAvail=false;
       return v;
     }
@@ -48,11 +52,12 @@ float gamepadVal(String a, float v) {
   }
 }
 boolean gamepadButton(String b, boolean v) {
-  if (gamepadAvail&&b!=null) {
+  if (gamepadAvail&&!b.equals(null)&&!b.equals("")&&!b.equals("null")) {
     try {
       return gpad.getButton(b).pressed();
     }
     catch(NullPointerException n) {
+      println("gamepad disabled err:4");
       gamepadAvail=false;
       return v;
     }
