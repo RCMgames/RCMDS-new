@@ -35,7 +35,7 @@ class UIButton {
     mouseID=mousescreen.registerZone(posX, posY, size, size);
   }
   boolean runVar() {
-    if (mousescreen.readPressed(mouseID)|| gamepadButton(gamepadButton, false)) {
+    if (mousescreen.readPressed(mouseID) || gamepadButton(gamepadButton, false)) {
       if (keyboardKey!=0) {
         virtualKeyboardButton.add(keyboardKey);
       }

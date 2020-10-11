@@ -39,7 +39,15 @@ void setupGamepad(String device) {
 float gamepadVal(String a, float v) {
   if (gamepadAvail&&!a.equals(null)&&!a.equals("")&&!a.equals("null")) {
     try {
-      return gpad.getSlider(a).getValue();
+      if (a.substring(3, 5).equals("Hat")) {
+        if (a.substring(0, 1).equals("X")) {
+          return gpad.getHat("pov").getX();
+        } else {
+          return gpad.getHat("pov").getY();
+        }
+      } else {
+        return gpad.getSlider(a).getValue();
+      }
     }
     catch(NullPointerException n) {
       println(a);
