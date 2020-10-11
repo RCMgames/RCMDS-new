@@ -28,15 +28,17 @@ void objectSetup(String file) {
 
       name = config[0];
 
-      wifiIP = config[1];
-      wifiPort = int(config[2]);
+      wifiIP = split(config[1],":")[0];
+      wifiPort = int(split(config[1],":")[1]);
+      println(wifiIP);
+      println(wifiPort);
       enabled=false;
 
-      msg=split(config[3], ";");
+      msg=split(config[2], ";");
 
 
-      numCtrl = int(split(config[4], ',')[0]);
-      numRecv = int(split(config[4], ',')[1]);
+      numCtrl = int(split(config[3], ',')[0]);
+      numRecv = int(split(config[3], ',')[1]);
       arrayToSend=new byte[4*numCtrl+8];
       arrayRecvd=new int [4*numRecv+8];
 
@@ -44,7 +46,7 @@ void objectSetup(String file) {
         data[i]=0;
       }
 
-      int a=6;
+      int a=5;
       nums = new int[6];
 
       for (; !config[a].equals(""); a++) {

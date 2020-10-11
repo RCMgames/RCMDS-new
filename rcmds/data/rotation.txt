@@ -1,6 +1,5 @@
 rotation example
-127.0.0.1
-25211
+127.0.0.1:25211
 Rotation:;var:0
 1,1
 

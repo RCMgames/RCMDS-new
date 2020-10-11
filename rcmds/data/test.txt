@@ -1,6 +1,5 @@
 Test template
-127.0.0.1
-25211
+127.0.0.1:25211
 ping: ,var:ping;ip: ,var:ip;port: ,var:port;Battery:; ,var:volt, volts;;0: ,var:0;1: ,var:1;2: ,var:2;3: ,var:3;4: ,var:4
 8,8
 

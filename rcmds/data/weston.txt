@@ -1,6 +1,5 @@
 weston bot
-192.168.86.136
-25210
+192.168.86.136:25210
 ping: ,var:ping;ip: ,var:ip;port: ,var:port;;0: ,var:0;1: ,var:1;2: ,var:2;3: ,var:3;4: ,var:4
 5,1
 

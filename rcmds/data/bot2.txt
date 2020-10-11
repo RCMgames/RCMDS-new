@@ -1,6 +1,5 @@
 x bot
-73.37.49.126
-25212
+73.37.49.126:25212
 ping: ,var:ping;ip: ,var:ip;port: ,var:port;;0: ,var:0;1: ,var:1;2: ,var:2;3: ,var:3;4: ,var:4
 8,8
 
