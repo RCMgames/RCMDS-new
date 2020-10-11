@@ -37,7 +37,7 @@ void setupGamepad(String device) {
   //}
 }
 float gamepadVal(String a, float v) {
-  if (gamepadAvail&&!a.equals(null)&&!a.equals("")&&!a.equals("null")) {
+  if (gamepadAvail&&!a.equals(null)) {
     try {
       if (a.substring(3, 5).equals("Hat")) {
         if (a.substring(0, 1).equals("X")) {
@@ -60,7 +60,7 @@ float gamepadVal(String a, float v) {
   }
 }
 boolean gamepadButton(String b, boolean v) {
-  if (gamepadAvail&&!b.equals(null)&&!b.equals("")&&!b.equals("null")) {
+  if (gamepadAvail&&!b.equals(null)) {
     try {
       return gpad.getButton(b).pressed();
     }

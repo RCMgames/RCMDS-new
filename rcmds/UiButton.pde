@@ -21,11 +21,11 @@ class UIButton {
     } else {
       keyboardKey = 0;
     }
-    //if (!configData[1].equals("")) {
+    if (!configData[1].equals(null)&&!configData[1].equals("")&&!configData[1].equals("null")) {
       gamepadButton = configData[1];
-    //} else {
-    //  gamepadButton = null;
-    //}
+    } else {
+      gamepadButton = null;
+    }
     type = int(configData[2]);
     posX = int(float(configData[3])*width);
     posY = int(float(configData[4])*height);
@@ -35,7 +35,7 @@ class UIButton {
     mouseID=mousescreen.registerZone(posX, posY, size, size);
   }
   boolean runVar() {
-    if (mousescreen.readPressed(mouseID) || gamepadButton(gamepadButton, false)) {
+    if (mousescreen.readPressed(mouseID) || gamepadButton(gamepadButton, false) || keyboardCtrl.isPressed(keyboardKey)) {
       if (keyboardKey!=0) {
         virtualKeyboardButton.add(keyboardKey);
       }

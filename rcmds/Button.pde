@@ -22,11 +22,11 @@ class Button {
     } else {
       keyboardKey = 0;
     }
-    //if (!configData[2].equals("")) {
+    if (!configData[2].equals(null)&&!configData[2].equals("")&&!configData[2].equals("null")) {
       gamepadButton = configData[2];
-    //} else {
-    //  gamepadButton = null;
-    //}
+    } else {
+      gamepadButton = null;
+    }
     type = int(configData[3]);
     onHold = float(configData[4]);
     onPressed = float(configData[5]);

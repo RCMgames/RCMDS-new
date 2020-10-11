@@ -29,11 +29,11 @@ class Axis {
     } else {
       keyboardKey2 = 0;
     }
-    //if (!configData[3].equals("")) {
+    if (!configData[3].equals(null)&&!configData[3].equals("")&&!configData[3].equals("null")) {
       gamepadAxis = configData[3];
-    //} else {
-    //  gamepadAxis = null;
-    //}
+    } else {
+      gamepadAxis = null;
+    }
     type = int(configData[4]);
     step = float(configData[5]);
     min = float(configData[6]);

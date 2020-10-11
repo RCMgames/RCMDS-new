@@ -5,6 +5,7 @@ ping: ,var:ping;ip: ,var:ip;port: ,var:port;;0: ,var:0;1: ,var:1;2: ,var:2;3: ,v
 5,1
 
 2,32,Button 5,1,.5,null,null,1
+2,l,Button 5,1,.5,null,null,null
 3,j,Button 4,1,null,1,-1,null
 4,44,Button 0,1,null,1,null,null
 4,k,Button 1,1,null,0.5,null,null
@@ -15,7 +16,8 @@ ping: ,var:ping;ip: ,var:ip;port: ,var:port;;0: ,var:0;1: ,var:1;2: ,var:2;3: ,v
 3,q,e,null,2,0.025,-1,1,true
 4,u,o,Z Axis,2,0.025,-1,1,true
 
-32,Button 5,1,.285,.9,666600,888800,40
+32,Button 5,1,.285,.9,888800,BBBB00,40
+l,Button 5,1,.285,.9,888800,BBBB00,40
 j,Button 4,1,.85,.6,003366,004488,30
 i,Button 3,1,.69,.45,336633,448844,30
 k,Button 1,1,.69,.6,336633,448844,30
