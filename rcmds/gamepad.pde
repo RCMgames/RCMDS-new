@@ -1,5 +1,6 @@
 //X Axis, Y Axis, Z Axis, X Rotation, Y Rotation
 boolean gamepadAvail=false;
+String gpadHat;
 import org.gamecontrolplus.*;
 import net.java.games.input.*;
 ControlIO control;
@@ -43,9 +44,9 @@ float gamepadVal(String a, float v) {
       if (a.length() > 1) {
         if (a.substring(2, 5).equals("Hat")) {
           if (a.substring(0, 1).equals("X")) {
-            return gpad.getHat("cooliehat: Hat Switch").getX();
+            return gpad.getHat(gpadHat).getX();
           } else {
-            return gpad.getHat("cooliehat: Hat Switch").getY();
+            return gpad.getHat(gpadHat).getY();
           }
         } else {
           return gpad.getSlider(a).getValue();

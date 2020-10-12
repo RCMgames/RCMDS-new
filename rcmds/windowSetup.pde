@@ -33,13 +33,15 @@ void windowSetup(String file) {
     try {
       String[] config;
       String[] line;
+      int a = 0;
 
       config = loadStrings(file+".txt");
 
-      line = split(config[0], ',');
+      line = split(config[a], ',');
       surface.setSize(int(line[0]), int(line[1]));
       surface.setResizable(false);
       surface.setTitle("Driver Station");
+      a++;
 
       background(10);
       textAlign(LEFT, TOP);
@@ -48,32 +50,44 @@ void windowSetup(String file) {
 
       mousescreen=new Mousescreen();
       keyboardCtrl=new KeyboardCtrl();
-      line = split(config[1], ',');
+      line = split(config[a], ',');
       enableSwitch=new EnableSwitch(line);
+      a++;
 
-      line = split(config[2], ',');
+      line = split(config[a], ',');
       configTypeBox=new TypeBox(line, color(0, 200, 0));
+      a++;
 
-      line = split(config[3], ',');
+      line = split(config[a], ',');
       robotName=new TextBox(line, color(255), true);
+      a++;
 
-      line = split(config[4], ',');
+      line = split(config[a], ',');
       errors=new TextBox(line, color(255, 0, 0), true);
+      a++;
 
-      line = split(config[5], ',');
+      line = split(config[a], ',');
       batVolts=new TextBox(line, color(255), false);
+      a++;
 
-      line = split(config[6], ',');
+      line = split(config[a], ',');
       batGraph=new BatteryGraph(line);
+      a++;
 
-      line = split(config[7], ',');
+      line = split(config[a], ',');
       dispTelem=new DisplayTelemetry(line);
+      a++;
 
-      line = split(config[8], ',');
+      line = split(config[a], ',');
       rectHeight = float(line[0]);
+      a++;
 
-      line = split(config[9], ',');
+      line = split(config[a], ',');
       setupGamepad(line[0]);
+      a++;
+      
+      line = split(config[a], ',');
+      gpadHat = line[0];
     }
     catch (Throwable e) {
       setup = "bad setup file";

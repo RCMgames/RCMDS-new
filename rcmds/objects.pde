@@ -23,28 +23,31 @@ void objectSetup(String file) {
 
       String[] config;
       String[] line;
+      int a=0;
 
       config = loadStrings(file+".txt");
 
-      name = config[0];
+      name = config[a];
+      a++;
 
-      wifiIP = split(config[1],":")[0];
-      wifiPort = int(split(config[1],":")[1]);
+      wifiIP = split(config[a],":")[0];
+      wifiPort = int(split(config[a],":")[1]);
       enabled=false;
+      a++;
 
-      msg=split(config[2], ";");
+      msg=split(config[a], ";");
+      a++;
 
-
-      numCtrl = int(split(config[3], ',')[0]);
-      numRecv = int(split(config[3], ',')[1]);
+      numCtrl = int(split(config[a], ',')[0]);
+      numRecv = int(split(config[a], ',')[1]);
       arrayToSend=new byte[4*numCtrl+8];
       arrayRecvd=new int [4*numRecv+8];
+      a+=2;
 
       for (int i=0; i<numCtrl+numRecv; i++) {
         data[i]=0;
       }
-
-      int a=5;
+      
       nums = new int[6];
 
       for (; !config[a].equals(""); a++) {

@@ -8,3 +8,4 @@
 .5,.6,.25,.8,14
 .2
 Controller (Xbox One For Windows)
+cooliehat: Hat Switch
