@@ -30,8 +30,6 @@ void objectSetup(String file) {
 
       wifiIP = split(config[1],":")[0];
       wifiPort = int(split(config[1],":")[1]);
-      println(wifiIP);
-      println(wifiPort);
       enabled=false;
 
       msg=split(config[2], ";");

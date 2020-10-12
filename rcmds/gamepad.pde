@@ -8,7 +8,7 @@ void setupGamepad(String device) {
   gamepadAvail=true;
   try {
     control = ControlIO.getInstance(this);
-    gpad=control.getDevice(device);
+    gpad = control.getDevice(device);
     //for (ControlDevice _gpad : control.getDevices()) {
     //  if (_gpad.getTypeName()=="Gamepad") {
     //    gpad=_gpad;
@@ -23,6 +23,7 @@ void setupGamepad(String device) {
     }
   }
   catch(Exception e) {
+    println(e);
     println("gamepad disabled err:2");
     gamepadAvail=false;
     return;
@@ -37,16 +38,20 @@ void setupGamepad(String device) {
   //}
 }
 float gamepadVal(String a, float v) {
-  if (gamepadAvail&&!a.equals(null)) {
+  if (gamepadAvail && a != null) {
     try {
-      if (a.substring(3, 5).equals("Hat")) {
-        if (a.substring(0, 1).equals("X")) {
-          return gpad.getHat("pov").getX();
+      if (a.length() > 1) {
+        if (a.substring(2, 5).equals("Hat")) {
+          if (a.substring(0, 1).equals("X")) {
+            return gpad.getHat("cooliehat: Hat Switch").getX();
+          } else {
+            return gpad.getHat("cooliehat: Hat Switch").getY();
+          }
         } else {
-          return gpad.getHat("pov").getY();
+          return gpad.getSlider(a).getValue();
         }
       } else {
-        return gpad.getSlider(a).getValue();
+        return gpad.getSlider(int(a)).getValue();
       }
     }
     catch(NullPointerException n) {
@@ -60,7 +65,7 @@ float gamepadVal(String a, float v) {
   }
 }
 boolean gamepadButton(String b, boolean v) {
-  if (gamepadAvail&&!b.equals(null)) {
+  if (gamepadAvail && b != null) {
     try {
       return gpad.getButton(b).pressed();
     }
