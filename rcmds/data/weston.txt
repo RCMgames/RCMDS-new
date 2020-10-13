@@ -3,27 +3,27 @@ weston bot
 ping: ,var:ping;ip: ,var:ip;port: ,var:port;;0: ,var:0;1: ,var:1;2: ,var:2;3: ,var:3;4: ,var:4
 5,1
 
-2,32,Button 5,1,.5,null,null,1
-2,l,Button 5,1,.5,null,null,null
-3,j,Button 4,1,null,1,-1,null
-4,44,Button 0,1,null,1,null,null
-4,k,Button 1,1,null,0.5,null,null
-4,i,Button 3,1,null,-1,null,null
+2,32,Button 4,1,.5,null,null,1
+2,l,Button 4,1,.5,null,null,null
+3,j,Button 5,1,null,0,.83,null
+4,44,Button 0,1,null,.9,null,null
+4,k,Button 2,1,null,.6,null,null
+4,i,Button 3,1,null,-.35,null,null
 
 0,s,w,Y Axis,1,1,-1,1,true
 1,a,d,X Rotation,1,1,-1,1,false
-3,q,e,null,2,0.025,-1,1,true
-4,u,o,Y Hat,2,0.025,-1,1,false
+3,q,e,null,2,0.025,0,.83,true
+4,u,o,Y Hat,2,0.025,-.35,.9,false
 
-32,Button 5,1,.285,.9,888800,BBBB00,40
-l,Button 5,1,.285,.9,888800,BBBB00,40
-j,Button 4,1,.85,.6,003366,004488,30
+32,Button 4,1,.285,.9,888800,BBBB00,40
+l,Button 4,1,.285,.9,888800,BBBB00,40
+j,Button 5,1,.85,.6,003366,004488,30
 i,Button 3,1,.69,.45,336633,448844,30
-k,Button 1,1,.69,.6,336633,448844,30
+k,Button 2,1,.69,.6,336633,448844,30
 44,Button 0,1,.69,.75,336633,448844,30
 
 
 1,0,.185,.55,888888,125
 
-4,1,-1,.76,.6,448844,1,30
-3,-1,1,.92,.6,004488,1,30
+4,.9,-.35,.76,.6,448844,1,30
+3,0,.83,.92,.6,004488,1,30
