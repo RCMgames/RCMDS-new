@@ -43,10 +43,8 @@ void objectSetup(String file) {
       arrayToSend=new byte[4*numCtrl+8];
       arrayRecvd=new int [4*numRecv+8];
       a+=2;
-
-      for (int i=0; i<numCtrl+numRecv; i++) {
-        data[i]=0;
-      }
+      
+      data = new float [numCtrl+numRecv];
       
       nums = new int[6];
 

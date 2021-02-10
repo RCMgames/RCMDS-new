@@ -1,7 +1,7 @@
 weston bot
 50.78.178.6:25215
-ping: ,var:ping;ip: ,var:ip;port: ,var:port;;0: ,var:0;1: ,var:1;2: ,var:2;3: ,var:3;4: ,var:4
-5,1
+ping: ,var:ping;ip: ,var:ip;port: ,var:port;;0: ,var:0;1: ,var:1;2: ,var:2;3: ,var:3;4: ,var:4;;Minimum Voltage:;var:5;Deadzone:;var:6
+5,3
 
 3,r,,1,null,0.83,null,null
 4,r,,1,null,0.865,null,null

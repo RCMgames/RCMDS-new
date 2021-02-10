@@ -42,7 +42,7 @@ class Axis {
   }
   boolean run() {
 
-    //retuen to center
+    //return to center
     if (type == 1) {
       data[variable] = (min+max)/2;
 

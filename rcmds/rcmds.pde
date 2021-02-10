@@ -1,4 +1,4 @@
-//v1.4.0
+//v1.4.1
 
 HashSet<Integer> virtualKeyboardButton;
 HashSet<String> virtualGamepadButton;
@@ -6,12 +6,12 @@ String[] Window;
 String imput = "example";
 String oldFile;
 String error = null;
-boolean enabled = false;
 String setup = "";
+boolean enabled = false;
 boolean ctrlPressed = false;
-int numCtrl=16; //how many variables for controlling the robot are sent
-int numRecv=8;  //how many variables are recieved, including battery
-float[] data = new float[numCtrl+numRecv];
+int numCtrl;
+int numRecv;
+float[] data;
 float scaleFactor;
 
 void setup() {
