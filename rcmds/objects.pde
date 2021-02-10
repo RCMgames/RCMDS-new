@@ -21,6 +21,7 @@ void objectSetup(String file) {
     uijoysticks=new ArrayList<UIJoystick>();
     uisliders=new ArrayList<UISlider>();
     try {
+      println("try start");
 
       String[] config;
       String[] line;
@@ -84,9 +85,11 @@ void objectSetup(String file) {
         uisliders.add(new UISlider(line));//
         nums[5]++;
       }
+      println("try end");
     }
     catch (Throwable e) {
       if ( oldFile != null) {
+        println("oldfile: "+oldFile);
         objectSetup(oldFile);
       }
       error = "Bad config file";
@@ -96,7 +99,7 @@ void objectSetup(String file) {
     error = "File not found";
     println("File not found");
   }
-  println(error);
+  println("error: "+error);
   if (error == null) {
     println("File Successful");
     oldFile=imput;
