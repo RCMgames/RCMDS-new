@@ -1,6 +1,6 @@
 Example template
 127.0.0.1:25211
-ping: ,var:ping;ip: ,var:ip;port: ,var:port;Battery:; ,var:volt, volts;;0: ,var:0;1: ,var:1;2: ,var:2;3: ,var:3;4: ,var:4;var:gamepad
+ping: ,var:ping;ip: ,var:ip;port: ,var:port;Battery:; ,var:volt, volts;;0: ,var:0;1: ,var:1;2: ,var:2;3: ,var:3;4: ,var:4
 8,8
 
 3,1,Button 0,1,null,1,-1,null

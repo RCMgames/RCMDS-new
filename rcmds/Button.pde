@@ -10,7 +10,6 @@ class Button {
   float onOff;
   boolean pressed = false;
   boolean wasPressed = false;
-  boolean wasKeyPressed = false;
   boolean activate = false;
   Button (String[] configData) {
     variable = int(configData[0]);
@@ -37,19 +36,20 @@ class Button {
   boolean run() {
     
     pressed = keyboardCtrl.isPressed(keyboardKey) || gamepadButton(gamepadButton, false) || virtualKeyboardButton.contains(keyboardKey) || virtualGamepadButton.contains(gamepadButton);
-    
+
     //momentary
     if (type == 1) {
       activate = pressed;
     }
     //toggle
     if (type == 2) {
-      if(pressed && !wasKeyPressed) {
+      if(pressed && !wasPressed) {
         activate = !activate;
       }
     }
     
     //more?
+    
 
     if (activate && !Float.isNaN(onHold)) {
       data[variable] = onHold;
@@ -67,7 +67,7 @@ class Button {
       data[variable] = onOff;
     }
     
-    wasKeyPressed = pressed;
+    wasPressed = pressed;
 
     return true;
   }

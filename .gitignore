@@ -2,3 +2,4 @@ rcmds/application*
 rcmds/.vscode*
 rcmds/out*
 *.ini
+rcmds/log.txt

@@ -38,8 +38,6 @@ class DisplayTelemetry {
               text = text + str(wifiPing);
             } else if (telemData[j].substring(4, telemData[j].length()).equals("volt")) {
               text = text + nf(data[numCtrl], 0, 4);
-            } else if (telemData[j].substring(4, telemData[j].length()).equals("gamepad")) {
-              text = text + str(gamepadAvail);
             } else {
               text = text + nf(data[int(telemData[j].substring(4, telemData[j].length()))], 1, 4);
             }

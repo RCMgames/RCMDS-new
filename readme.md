@@ -7,9 +7,11 @@ Setup lines: `1-5`
 3. port
 4. telemetry data (see below)
 5. number of sent variables,number of received variables
-6. free line
+6. key you want pressed on first frame
+	- Can be used to auto-set variables
+	- Can be left blank
 
-Object lines: `7-`
+Object lines: `6-`
 list groups of objects in order:
 1. Buttons
 2. Axes
@@ -18,7 +20,7 @@ list groups of objects in order:
 5. UIJoysticks
 6. UISlider
  
-leave a blank line between groups
+#### leave a blank line between groups
 
 ---
 ### Variables and objects
@@ -183,5 +185,9 @@ to have a blank line you can put two semicolons next to each other
 example telemetry line:
 
     ping: ,var:ping;ip: ,var:ip;port: ,var:port;Battery:; ,var:volt, volts;;0: ,var:0;1: ,var:1;2: ,var:2;3: ,var:3;4: ,var:4
-
+---
+### Known Bugs:
+-	If you unplug a gamepad while the program is running a lot of things break and you need to resatart the driver station before you can use a gampad again
+	- This will not be fixed because it is a problem with the library we use to handle gamepads.
+- If there any other bugs please let us know!
 ###### window size and layout can be changed in the setup.txt file, ask weston or joshua if you want to edit that

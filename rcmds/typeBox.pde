@@ -17,7 +17,7 @@ class TypeBox {
     y=height*float(configData[1]);
     w=width*float(configData[2]);
     h=height*float(configData[3]);
-    label=configData[4];
+    label="File: ";
     e=false;
     le=false;
     col=_col;

@@ -18,14 +18,16 @@ void setupGamepad(String device) {
     }
     gpad=control.getDevice(gpad.getName());
     if (gpad == null) {
-      println("gamepad disabled err:1");
+      output.println("gamepad disabled err:1");
+      output.flush();
       gamepadAvail=false;
       return;
     }
   }
   catch(Exception e) {
-    println(e);
-    println("gamepad disabled err:2");
+    output.println(e);
+    output.println("gamepad disabled err:2");
+    output.flush();
     gamepadAvail=false;
     return;
   }
@@ -56,8 +58,9 @@ float gamepadVal(String a, float v) {
       }
     }
     catch(NullPointerException n) {
-      println(a);
-      println("gamepad disabled err:3");
+      output.println(a);
+      output.println("gamepad disabled err:3");
+      output.flush();
       gamepadAvail=false;
       return v;
     }
@@ -71,7 +74,8 @@ boolean gamepadButton(String b, boolean v) {
       return gpad.getButton(b).pressed();
     }
     catch(NullPointerException n) {
-      println("gamepad disabled err:4");
+      output.println("gamepad disabled err:4");
+      output.flush();
       gamepadAvail=false;
       return v;
     }

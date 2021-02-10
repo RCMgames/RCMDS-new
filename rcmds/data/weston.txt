@@ -1,10 +1,12 @@
 weston bot
 50.78.178.6:25215
 ping: ,var:ping;ip: ,var:ip;port: ,var:port;;0: ,var:0;1: ,var:1;2: ,var:2;3: ,var:3;4: ,var:4;;Minimum Voltage:;var:5;Deadzone:;var:6
-5,3
-
+7,1
+r
 3,r,,1,null,0.83,null,null
 4,r,,1,null,0.865,null,null
+5,r,,1,null,3.5,null,null
+6,r,,1,null,0.2,null,null
 2,32,Button 4,1,.75,null,null,1
 2,l,Button 4,1,.75,null,null,null
 3,j,Button 5,1,null,0,.83,null

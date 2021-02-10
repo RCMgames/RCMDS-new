@@ -10,9 +10,12 @@ String[] msg = new String[0];
 int[] nums = new int[6];
 
 void objectSetup(String file, boolean print) {
+  auto = false;
   if (print) {
-    println("\n" + "File: "+file+".txt");
+    output.println("\n" + "File: "+file+".txt");
+    output.flush();
   }
+  int a=0;
   if (fileExists(dataPath(file+".txt"))) {
     buttons=new ArrayList<Button>();
     axes=new ArrayList<Axis>();
@@ -24,7 +27,6 @@ void objectSetup(String file, boolean print) {
 
       String[] config;
       String[] line;
-      int a=0;
 
       config = loadStrings(file+".txt");
 
@@ -43,11 +45,15 @@ void objectSetup(String file, boolean print) {
       numRecv = int(split(config[a], ',')[1]);
       arrayToSend=new byte[4*numCtrl+8];
       arrayRecvd=new int [4*numRecv+8];
-      a+=2;
-
       data = new float [numCtrl+numRecv];
-
       nums = new int[6];
+      a++;
+      
+      if(config[a].length() == 1){
+        autoKey=int(config[a].charAt(0));
+      }
+      
+      a++;
 
       for (; !config[a].equals(""); a++) {
         line = split(config[a], ',');
@@ -86,7 +92,8 @@ void objectSetup(String file, boolean print) {
       }
       error = null;
         if (print) {
-          println("File Successful");
+          output.println("File Successful");
+          output.flush();
         }
         oldFile=file;
     }
@@ -95,12 +102,16 @@ void objectSetup(String file, boolean print) {
         objectSetup(oldFile, false);
       }
       error = "Bad config file";
-      println("error: "+error);
+      output.println(error);
+      output.println("error: " + e);
+      output.println("line: " + str(a+1));
+      output.flush();
       e.printStackTrace();
     }
   } else {
     error = "File not found";
-    println("File not found");
+    output.println("File not found");
+    output.flush();
   }
 }
 

@@ -9,15 +9,19 @@ String error = null;
 String setup = "";
 boolean enabled = false;
 boolean ctrlPressed = false;
+boolean auto = false;
 int numCtrl;
 int numRecv;
 float[] data;
 float scaleFactor;
+PrintWriter output;
+int autoKey;
 
 void setup() {
   surface.setSize(576,324);
   virtualKeyboardButton=new HashSet<Integer>();
   virtualGamepadButton=new HashSet<String>();
+  output = createWriter("log.txt"); 
   windowSetup("setup");
   if (setup.equals("")) {
     udp = new UDP(this);
@@ -32,6 +36,10 @@ void draw() {
     fill(20);
     noStroke();
     rect(width/2, height*rectHeight/2, width, height*rectHeight);
+    if(!auto) {
+      virtualKeyboardButton.add(autoKey);
+      auto = true;
+    }
     enabled=runEnableSwitch(enabled);
     runObjects();
     runTypeBox();
@@ -40,20 +48,19 @@ void draw() {
     sendWifiData(true);
     robotName.run("Name: "+name);
     dispTelem.run(msg);
-
+    if (keyboardCtrl.justPressed(12)) {
+      launch(dataPath("log.txt"));
+    }
     if (keyboardCtrl.justPressed(15)) {
       launch(dataPath(oldFile+".txt"));
     }
-
     if (keyboardCtrl.justPressed(16)) {
       launch(dataPath("setup.txt"));
     }
-
     if (keyboardCtrl.justPressed(18)) {
       windowSetup("setup");
       objectSetup(oldFile,true);
     }
-
     if (!focused) {
       enabled = false;
     }

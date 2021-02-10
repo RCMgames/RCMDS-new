@@ -38,8 +38,21 @@ void windowSetup(String file) {
 
       config = loadStrings(file+".txt");
 
-      scaleFactor = float(config[a]);
-      surface.setSize(int(scaleFactor*576), int(scaleFactor*324));
+      line = split(config[a], ',');
+      
+      if (line.length == 1) {
+        scaleFactor = float(config[a]);
+        surface.setSize(int(scaleFactor*576), int(scaleFactor*324));
+      } else {
+        surface.setSize(int(line[0]), int(line[1]));
+        scaleFactor = 1;
+        if (float(line[1])/float(line[0]) >= 0.5625) {
+          scaleFactor = float(line[0])/576;
+        } else {
+          scaleFactor = float(line[1])/324;
+        }
+      }
+      
       surface.setResizable(false);
       surface.setTitle("Driver Station");
       a++;
@@ -89,7 +102,8 @@ void windowSetup(String file) {
 
       line = split(config[a], ',');
       gpadHat = line[0];
-      println("\n" + "Setup Successful");
+      output.println("\n" + "Setup Successful");
+      output.flush();
     }
     catch (Throwable e) {
       setup = "bad setup file";
