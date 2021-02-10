@@ -12,8 +12,10 @@ boolean ctrlPressed = false;
 int numCtrl=16; //how many variables for controlling the robot are sent
 int numRecv=8;  //how many variables are recieved, including battery
 float[] data = new float[numCtrl+numRecv];
+float scaleFactor;
 
 void setup() {
+  surface.setSize(576,324);
   virtualKeyboardButton=new HashSet<Integer>();
   virtualGamepadButton=new HashSet<String>();
   windowSetup("setup");

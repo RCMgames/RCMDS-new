@@ -11,6 +11,7 @@ class Button {
   boolean pressed = false;
   boolean wasPressed = false;
   boolean wasKeyPressed = false;
+  boolean activate = false;
   Button (String[] configData) {
     variable = int(configData[0]);
     if (!configData[1].equals("")) {
@@ -34,32 +35,39 @@ class Button {
     onOff = float(configData[7]);
   }
   boolean run() {
-
+    
+    pressed = keyboardCtrl.isPressed(keyboardKey) || gamepadButton(gamepadButton, false) || virtualKeyboardButton.contains(keyboardKey) || virtualGamepadButton.contains(gamepadButton);
+    
+    //momentary
     if (type == 1) {
-      pressed = keyboardCtrl.isPressed(keyboardKey) || gamepadButton(gamepadButton, false) || virtualKeyboardButton.contains(keyboardKey) || virtualGamepadButton.contains(gamepadButton);
-    } else {
-      if ((keyboardCtrl.isPressed(keyboardKey) || gamepadButton(gamepadButton, false) || virtualKeyboardButton.contains(keyboardKey) || virtualGamepadButton.contains(gamepadButton)) && !wasKeyPressed) {
-        pressed = !pressed;
-      }
-      wasKeyPressed = keyboardCtrl.isPressed(keyboardKey) || gamepadButton(gamepadButton, false)|| virtualKeyboardButton.contains(keyboardKey) || virtualGamepadButton.contains(gamepadButton);
+      activate = pressed;
     }
+    //toggle
+    if (type == 2) {
+      if(pressed && !wasKeyPressed) {
+        activate = !activate;
+      }
+    }
+    
+    //more?
 
-    if (pressed && wasPressed && !Float.isNaN(onHold)) {
+    if (activate && !Float.isNaN(onHold)) {
       data[variable] = onHold;
     }
 
-    if (pressed && !wasPressed && !Float.isNaN(onPressed)) {
+    if (activate && !wasPressed && !Float.isNaN(onPressed)) {
       data[variable] = onPressed;
     }
 
-    if (!pressed && wasPressed && !Float.isNaN(onReleased)) {
+    if (!activate && wasPressed && !Float.isNaN(onReleased)) {
       data[variable] = onReleased;
     }
 
-    if (!pressed && !wasPressed && !Float.isNaN(onOff)) {
+    if (!activate && !Float.isNaN(onOff)) {
       data[variable] = onOff;
     }
-    wasPressed = pressed;
+    
+    wasKeyPressed = pressed;
 
     return true;
   }

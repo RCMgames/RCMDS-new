@@ -1,0 +1,11 @@
+Scale Factor (float)
+enable switch (x,y,w,h)
+imput box (x,y,w,h,Pretext)
+robot name (x,y)
+error messages (x,y)
+voltage (x,y)
+battery graph (x,y,w,h,speed)
+telemetry box (x,y,w,h)
+greyed out top area (h)
+gamepad name
+d-pad name

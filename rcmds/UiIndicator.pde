@@ -16,7 +16,7 @@ class UIIndicator {
     posY = int(float(configData[4])*height);
     off = int(unhex("FF"+configData[5]));
     on = int(unhex("FF"+configData[6]));
-    size = int(configData[7]);
+    size = int(scaleFactor*int(configData[7]));
   }
   boolean runVar() {
 

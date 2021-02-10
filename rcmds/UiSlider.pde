@@ -18,7 +18,7 @@ class UISlider {
     posY = int(float(configData[4])*height);
     rgb = int(unhex("FF"+configData[5]));
     rotation = int(configData[6]);
-    size = int(configData[7]);
+    size = int(scaleFactor*int(configData[7]));
     if (rotation==2) {
       mouseID=mousescreen.registerZone(int(posX), int(posY), size*5.25, size);
     } else {//horiz

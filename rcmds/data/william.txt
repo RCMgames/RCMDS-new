@@ -1,5 +1,5 @@
 William's RCMDS
-127.0.0.1:25214
+50.78.178.6:25211
 ping: ,var:ping;ip: ,var:ip;port: ,var:port;Battery:; ,var:volt, volts;;0: ,var:0;1: ,var:1;2: ,var:2;3: ,var:3;4: ,var:4
 8,8
 
@@ -8,7 +8,7 @@ ping: ,var:ping;ip: ,var:ip;port: ,var:port;Battery:; ,var:volt, volts;;0: ,var:
 3,3,,1,null,-1,null,null
 
 0,s,w,Y Axis,1,0.003,-1,1,true
-2,a,d,X Axis,1,0.003,-1,1,true
+2,a,d,X Axis,1,0.003,-1,1,false
 
 1,,1,.75,.46,008800,557571,30
 2,,1,.75,.61,008800,557571,30

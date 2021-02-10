@@ -10,6 +10,7 @@ class UIButton {
   int size;
   boolean pressed = false;
   boolean wasKeyPressed = false;
+  boolean activate = false;
   int mouseID;
   UIButton (String[] configData) {
     if (!configData[0].equals("")) {
@@ -31,7 +32,7 @@ class UIButton {
     posY = int(float(configData[4])*height);
     on = int(unhex("FF"+configData[5]));
     off = int(unhex("FF"+configData[6]));
-    size = int(configData[7]);
+    size = int(scaleFactor*int(configData[7]));
     mouseID=mousescreen.registerZone(posX, posY, size, size);
   }
   boolean runVar() {
@@ -48,21 +49,28 @@ class UIButton {
   }
   boolean runUI() {
 
+    pressed = keyboardCtrl.isPressed(keyboardKey) || gamepadButton(gamepadButton, false) || virtualKeyboardButton.contains(keyboardKey) || virtualGamepadButton.contains(gamepadButton);
+    
+    //momentary
     if (type == 1) {
-      pressed = keyboardCtrl.isPressed(keyboardKey) || gamepadButton(gamepadButton, false) || virtualKeyboardButton.contains(keyboardKey) || virtualGamepadButton.contains(gamepadButton);
-    } else {
-      if ((keyboardCtrl.isPressed(keyboardKey) || gamepadButton(gamepadButton, false) || virtualKeyboardButton.contains(keyboardKey) || virtualGamepadButton.contains(gamepadButton)) && !wasKeyPressed) {
-        pressed = !pressed;
+      activate = pressed;
+    }
+    //toggle
+    if (type == 2) {
+      if(pressed && !wasKeyPressed) {
+        activate = !activate;
       }
-      wasKeyPressed = keyboardCtrl.isPressed(keyboardKey) || gamepadButton(gamepadButton, false) || virtualKeyboardButton.contains(keyboardKey) || virtualGamepadButton.contains(gamepadButton);
     }
 
-    if (pressed) {
+    if (activate) {
       fill(on);
     } else {
       fill (off);
     }
+    
     rect(posX, posY, size, size, size/4);
+    
+    wasKeyPressed = pressed;
 
     return true;
   }

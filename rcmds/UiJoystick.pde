@@ -13,7 +13,7 @@ class UIJoystick {
     posX = int(float(configData[2])*width);
     posY = int(float(configData[3])*height);
     rgb = int(unhex("FF"+configData[4]));
-    size = int(configData[5]);
+    size = int(scaleFactor*int(configData[5]));
     mouseID=mousescreen.registerZone(posX, posY, size, size);
   }
   boolean runVar() {

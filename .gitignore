@@ -1,2 +1,4 @@
 rcmds/application*
+rcmds/.vscode*
+rcmds/out*
 *.ini

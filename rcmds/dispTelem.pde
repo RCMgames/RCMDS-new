@@ -4,7 +4,7 @@ class DisplayTelemetry {
   float w;
   float h;
   int ts;
-  int offset = 3;
+  int offset;
 
   DisplayTelemetry (String[] configData) {
     x = width*float(configData[0]);
@@ -12,11 +12,12 @@ class DisplayTelemetry {
     w = width*float(configData[2]);
     h = height*float(configData[3]);
     ts = int(configData[4]);
+    offset = int(3*scaleFactor);
   }
   boolean run(String[] msg) {
     pushStyle();
     textAlign(LEFT, BOTTOM);
-    textSize(ts);
+    textSize(ts*scaleFactor);
     stroke(255);
     strokeWeight(1);
     fill(10);
@@ -48,7 +49,7 @@ class DisplayTelemetry {
         }
       }
 
-      text(text, x-w/2+5, y-h/2+ts+5+i*ts+i*offset);
+      text(text, x-w/2+5, y-h/2+scaleFactor*ts+5+i*ts*scaleFactor+i*offset);
     }
     popStyle();
     return true;

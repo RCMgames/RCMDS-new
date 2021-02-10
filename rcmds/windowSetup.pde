@@ -1,5 +1,6 @@
 /*
-576,324
+ scale factor:
+ 1
  enable switch:
  .8125,.1,.25,.11111
  text box:
@@ -16,7 +17,7 @@
  .5,.6,.25,.8
  greyed out top area
  .2
- */
+*/
 
 TypeBox configTypeBox;
 EnableSwitch enableSwitch;
@@ -36,9 +37,9 @@ void windowSetup(String file) {
       int a = 0;
 
       config = loadStrings(file+".txt");
-
-      line = split(config[a], ',');
-      surface.setSize(int(line[0]), int(line[1]));
+      
+      scaleFactor = float(config[a]);
+      surface.setSize(int(scaleFactor*576),int(scaleFactor*324));
       surface.setResizable(false);
       surface.setTitle("Driver Station");
       a++;

@@ -1,0 +1,28 @@
+Config file for Robot 2 aka TallBot
+73.37.49.126:25212
+ping: ,var:ping;ip: ,var:ip;port: ,var:port;0: ,var:0;1: ,var:1;2: ,var:2;3: ,var:3;4: ,var:4;5: ,var:5;6: ,var:6;7: ,var:7;8: ,var:8;9: ,var:9;10: ,var:10
+8,8
+
+4,t,,1,NaN,.61,NaN,NaN
+4,g,,1,NaN,-.4,NaN,NaN
+3,r,,1,NaN,1,NaN,NaN
+3,f,,1,NaN,-1,NaN,NaN
+
+2,q,e,X Rotation,1,1,-1,1,false
+0,s,w,,1,1,-1,1,false
+1,a,d,,1,1,-1,1,false
+4,0,0,Y Rotation,2,1,-1,1,false
+
+t,,1,.35,.4,0000FF,FFFFFF,10
+g,,1,.35,.6,0000FF,FFFFFF,10
+r,,1,.15,.4,FF0000,FFFFFF,10
+f,,1,.15,.6,FF0000,FFFFFF,10
+
+
+1,0,0.75,0.5,888888,100
+
+4,-1,1,.4,.5,FF0000,1,20
+3,-1,1,.2,.5,FF0000,1,20
+2,-1,1,0.75,.75,777777,2,20
+
+#omlette

@@ -9,14 +9,15 @@ void setupGamepad(String device) {
   gamepadAvail=true;
   try {
     control = ControlIO.getInstance(this);
-    gpad = control.getDevice(device);
-    //for (ControlDevice _gpad : control.getDevices()) {
-    //  if (_gpad.getTypeName()=="Gamepad") {
-    //    gpad=_gpad;
-    //    break;
-    //  }
-    //}
-    //gpad=control.getDevice(gpad.getName());
+    //gpad = control.getDevice(device);
+    for (ControlDevice _gpad : control.getDevices()) {
+      if (_gpad.getTypeName()=="Gamepad") {
+        gpad=_gpad;
+        println(gpad);
+        break;
+      }
+    }
+    gpad=control.getDevice(gpad.getName());
     if (gpad == null) {
       println("gamepad disabled err:1");
       gamepadAvail=false;

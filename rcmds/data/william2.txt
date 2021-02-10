@@ -1,0 +1,23 @@
+William-2
+50.78.178.6:25216
+ping: ,var:ping;ip: ,var:ip;port: ,var:port;Battery:; ,var:volt, volts;;0: ,var:0;1: ,var:1;2: ,var:2;3: ,var:3;4: ,var:4
+8,8
+
+4,m,Button 0,1,null,-.4,null,null
+4,j,Button 2,1,null,.77,null,null
+3,o,Button 5,1,null,-.2,1,null
+
+2,i,p,Z Axis,1,0.003,-1,1,true
+1,a,d,X Rotation,1,0.003,-1,1,false
+0,s,w,Y Axis,1,0.003,-1,1,true
+
+m,Button 0,1,.7,.8,880000,005555,50
+j,Button 2,1,.7,.4,880000,005555,50
+o,Button 5,1,.8,.8,009000,005500,50
+
+
+1,0,.2,.5,888888,125
+
+
+
+

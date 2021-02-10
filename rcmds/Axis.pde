@@ -42,7 +42,7 @@ class Axis {
   }
   boolean run() {
 
-    //rtc
+    //retuen to center
     if (type == 1) {
       data[variable] = (min+max)/2;
 
@@ -55,7 +55,7 @@ class Axis {
       }
 
       //if ((((!keyboardCtrl.isPressed(keyboardKey1) && !virtualKeyboardButton.contains(keyboardKey1)) || keyboardKey1==0) && ((!keyboardCtrl.isPressed(keyboardKey2) && !virtualKeyboardButton.contains(keyboardKey2)) || keyboardKey2==0)) && !gamepadAxis.equals("")) {
-        if (((!keyboardCtrl.isPressed(keyboardKey1) && !virtualKeyboardButton.contains(keyboardKey1)) || keyboardKey1==0) && ((!keyboardCtrl.isPressed(keyboardKey2) && !virtualKeyboardButton.contains(keyboardKey2)) || keyboardKey2==0)) {
+      if (((!keyboardCtrl.isPressed(keyboardKey1) && !virtualKeyboardButton.contains(keyboardKey1)) || keyboardKey1==0) && ((!keyboardCtrl.isPressed(keyboardKey2) && !virtualKeyboardButton.contains(keyboardKey2)) || keyboardKey2==0)) {
         if (invert) {
           data[variable] = map(gamepadVal(gamepadAxis, data[variable]), 1, -1, min, max);
         } else {
@@ -64,7 +64,7 @@ class Axis {
       }
     }
 
-    //hold
+    //hold value
     if (type == 2) {      
       if (keyboardCtrl.isPressed(keyboardKey1) || virtualKeyboardButton.contains(keyboardKey1)) {
         data[variable] -= step;
