@@ -22,7 +22,7 @@ void setup() {
   if (setup.equals("")) {
     udp = new UDP(this);
     udp.listen(true);
-    objectSetup(imput);
+    objectSetup(imput,true);
   }
 }
 
@@ -51,7 +51,7 @@ void draw() {
 
     if (keyboardCtrl.justPressed(18)) {
       windowSetup("setup");
-      objectSetup(oldFile);
+      objectSetup(oldFile,true);
     }
 
     if (!focused) {

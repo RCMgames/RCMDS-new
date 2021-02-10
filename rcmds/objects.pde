@@ -9,11 +9,11 @@ String name;
 String[] msg = new String[0];
 int[] nums = new int[6];
 
-void objectSetup(String file) {
-  println("");
-  println("File: "+imput+".txt");
-  error = null;
-  if (fileExists(dataPath(imput+".txt"))) {
+void objectSetup(String file, boolean print) {
+  if (print) {
+    println("\n" + "File: "+file+".txt");
+  }
+  if (fileExists(dataPath(file+".txt"))) {
     buttons=new ArrayList<Button>();
     axes=new ArrayList<Axis>();
     uibuttons=new ArrayList<UIButton>();
@@ -21,7 +21,6 @@ void objectSetup(String file) {
     uijoysticks=new ArrayList<UIJoystick>();
     uisliders=new ArrayList<UISlider>();
     try {
-      println("try start");
 
       String[] config;
       String[] line;
@@ -85,24 +84,23 @@ void objectSetup(String file) {
         uisliders.add(new UISlider(line));//
         nums[5]++;
       }
-      println("try end");
+      error = null;
+        if (print) {
+          println("File Successful");
+        }
+        oldFile=file;
     }
     catch (Throwable e) {
       if ( oldFile != null) {
-        println("oldfile: "+oldFile);
-        objectSetup(oldFile);
+        objectSetup(oldFile, false);
       }
       error = "Bad config file";
+      println("error: "+error);
       e.printStackTrace();
     }
   } else {
     error = "File not found";
     println("File not found");
-  }
-  println("error: "+error);
-  if (error == null) {
-    println("File Successful");
-    oldFile=imput;
   }
 }
 

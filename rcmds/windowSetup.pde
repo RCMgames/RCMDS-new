@@ -17,7 +17,7 @@
  .5,.6,.25,.8
  greyed out top area
  .2
-*/
+ */
 
 TypeBox configTypeBox;
 EnableSwitch enableSwitch;
@@ -37,9 +37,9 @@ void windowSetup(String file) {
       int a = 0;
 
       config = loadStrings(file+".txt");
-      
+
       scaleFactor = float(config[a]);
-      surface.setSize(int(scaleFactor*576),int(scaleFactor*324));
+      surface.setSize(int(scaleFactor*576), int(scaleFactor*324));
       surface.setResizable(false);
       surface.setTitle("Driver Station");
       a++;
@@ -86,9 +86,10 @@ void windowSetup(String file) {
       line = split(config[a], ',');
       setupGamepad(line[0]);
       a++;
-      
+
       line = split(config[a], ',');
       gpadHat = line[0];
+      println("\n" + "Setup Successful");
     }
     catch (Throwable e) {
       setup = "bad setup file";

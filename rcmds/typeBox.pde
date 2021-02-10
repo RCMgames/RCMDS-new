@@ -129,7 +129,7 @@ void runTypeBox () {
   wasTypeBoxActive = typeBoxActive;
   imput=configTypeBox.run(imput);
   if (wasTypeBoxActive && !typeBoxActive) {
-    objectSetup(imput);
+    objectSetup(imput,true);
   }
   //textSize(height/20);
   if (error != null) {
