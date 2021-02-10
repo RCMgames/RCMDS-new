@@ -12,6 +12,7 @@ int[] nums = new int[6];
 void objectSetup(String file) {
   println("");
   println("File: "+imput+".txt");
+  error = null;
   if (fileExists(dataPath(imput+".txt"))) {
     buttons=new ArrayList<Button>();
     axes=new ArrayList<Axis>();
@@ -30,8 +31,8 @@ void objectSetup(String file) {
       name = config[a];
       a++;
 
-      wifiIP = split(config[a],":")[0];
-      wifiPort = int(split(config[a],":")[1]);
+      wifiIP = split(config[a], ":")[0];
+      wifiPort = int(split(config[a], ":")[1]);
       enabled=false;
       a++;
 
@@ -43,9 +44,9 @@ void objectSetup(String file) {
       arrayToSend=new byte[4*numCtrl+8];
       arrayRecvd=new int [4*numRecv+8];
       a+=2;
-      
+
       data = new float [numCtrl+numRecv];
-      
+
       nums = new int[6];
 
       for (; !config[a].equals(""); a++) {
@@ -83,9 +84,6 @@ void objectSetup(String file) {
         uisliders.add(new UISlider(line));//
         nums[5]++;
       }
-      println("File Successful");
-      oldFile=imput;
-      error = null;
     }
     catch (Throwable e) {
       if ( oldFile != null) {
@@ -98,8 +96,13 @@ void objectSetup(String file) {
     error = "File not found";
     println("File not found");
   }
+  println(error);
+  if (error == null) {
+    println("File Successful");
+    oldFile=imput;
+  }
 }
-  
+
 void runObjects () {
   for (int i=0; i<nums[2]; i++) {
     uibuttons.get(i).runVar();

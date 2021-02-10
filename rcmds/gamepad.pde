@@ -13,7 +13,6 @@ void setupGamepad(String device) {
     for (ControlDevice _gpad : control.getDevices()) {
       if (_gpad.getTypeName()=="Gamepad") {
         gpad=_gpad;
-        println(gpad);
         break;
       }
     }
