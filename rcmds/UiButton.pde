@@ -1,7 +1,8 @@
 //keyboardkey,gamepadbutton,type,x,y,color,size
 class UIButton {
   int keyboardKey;
-  String gamepadButton;
+  String gamepadButton = null;
+  String gamepadAxis = null;
   int type;
   int posX;
   int posY;
@@ -11,6 +12,7 @@ class UIButton {
   boolean pressed = false;
   boolean wasKeyPressed = false;
   boolean activate = false;
+  boolean axisInvert = false;
   int mouseID;
   UIButton (String[] configData) {
     if (!configData[0].equals("")) {
@@ -23,9 +25,18 @@ class UIButton {
       keyboardKey = 0;
     }
     if (!configData[1].equals(null)&&!configData[1].equals("")&&!configData[1].equals("null")) {
-      gamepadButton = configData[1];
-    } else {
-      gamepadButton = null;
+      if (configData[1].substring(0, 6).equals("Button")) {
+        gamepadButton = configData[1];
+      } else {
+        if (configData[1].substring(0, 1).equals("-") || configData[1].substring(0, 1).equals("!") || configData[1].substring(0, 1).equals("+")) {
+          gamepadAxis = configData[1].substring(1, configData[1].length());
+          if (!configData[1].substring(0, 1).equals("+")) {
+            axisInvert = true;
+          }
+        } else {
+          gamepadAxis = configData[1];
+        }
+      }
     }
     type = int(configData[2]);
     posX = int(float(configData[3])*width);
@@ -50,6 +61,18 @@ class UIButton {
   boolean runUI() {
 
     pressed = keyboardCtrl.isPressed(keyboardKey) || gamepadButton(gamepadButton, false) || virtualKeyboardButton.contains(keyboardKey) || virtualGamepadButton.contains(gamepadButton);
+    
+    if (gamepadAxis != null) {
+      if (axisInvert) {
+        if (gamepadVal(gamepadAxis, 0) < -0.5) {
+          pressed = true;
+        }
+      } else {
+        if (gamepadVal(gamepadAxis, 0) > 0.5) {
+          pressed = true;
+        }
+      }
+    }
     
     //momentary
     if (type == 1) {
