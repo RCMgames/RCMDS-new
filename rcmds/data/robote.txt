@@ -1,0 +1,21 @@
+robote
+50.78.178.6:25217
+ping: ,var:ping;ip: ,var:ip;port: ,var:port;f/b: ,var:0;turn: ,var:2;climb: ,var:1;intake: ,var:4;push: ,var:5
+10,5
+
+5, ,,2,NaN,1,0,NaN,//Button for push mode
+4,j,,1,NaN,-1,0,NaN,//Button for intake in
+4,u,,1,NaN,1,0,NaN,//Button for intake out
+1,i,,1,NaN,1,0,NaN,//Button for raise hook
+1,k,,1,NaN,-1,0,NaN,//Button for lower hook
+
+0,s,w,,1,1,-1,1,false,//f/b axis
+2,a,d,,1,1,-1,1,false,//turn axis
+
+ ,,2,.15,.8,FF8800,BFBFBF,50,//UIButton for push mode
+
+
+2,0,0.15,0.5,888888,100,//drive joystick
+
+4,-1,1,0.7,.5,770077,1,35,//intake slider
+1,-1,1,0.78,.4,DD0000,1,20,//climber slider
