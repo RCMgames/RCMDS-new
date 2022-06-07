@@ -1,0 +1,22 @@
+swervo man
+10.0.0.87:25212
+ping: ,var:ping;ip: ,var:ip;port: ,var:port;;ls: ,var:0;lt: ,var:1;rs: ,var:2;rt: ,var:3;;lturn: ,var:5;rturn: ,var:6
+4,3
+
+1,v,Button 4,1,0,null,null,null
+3,n,Button 5,1,0,null,null,null
+
+0,s,w,Y Axis,1,1,-1,1,true
+1,a,d,X Axis,2,.01,-1,1,false
+2,k,i,Y Rotation,1,1,-1,1,true
+3,j,l,X Rotation,2,.01,-1,1,false
+
+v,Button 4,1,.18,.95,770000,880000,25
+n,Button 5,1,.82,.95,007700,008800,25
+
+
+
+0,-1,1,.18,.5,880000,1,30
+1,-1,1,.18,.85,880000,2,30
+2,-1,1,.82,.5,008800,1,30
+3,-1,1,.82,.85,008800,2,30
