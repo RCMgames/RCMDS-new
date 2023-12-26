@@ -8,7 +8,7 @@ UDP udp;
 long wifiReceivedMillis=0;
 long wifiSentMillis=0;
 long wifiPing=-1;
-static final int wifiRetryPingTime=800;
+static final int wifiRetryPingTime=500;
 static final float disableTimeMultiplier=8;
 void sendWifiData(boolean t) {
   if ((t&&millis()-wifiSentMillis>wifiRetryPingTime)||!t) {
