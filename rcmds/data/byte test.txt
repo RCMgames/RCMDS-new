@@ -1,6 +1,6 @@
 tests RCM BYTE
-192.168.137.165:25210
-ping: ,var:ping;A:,var:0,B:,var:1;C:,var:2,D:,var:3;E:,var:4,F:,var:5;G:,var:6,H:,var:7;1: ,var:9;2: ,var:10;3: ,var:11;4: ,var:12;5: ,var:13;6: ,var:14;7: ,var:15;8: ,var:16;
+192.168.137.150:25210
+ping: ,var:ping;A:,var:0,B:,var:1;C:,var:2,D:,var:3;E:,var:4,F:,var:5;G:,var:6,H:,var:7;1: ,var:8;2: ,var:9;3: ,var:10;4: ,var:11;5: ,var:12;6: ,var:13;7: ,var:14;8: ,var:15;
 17,4
 
 
